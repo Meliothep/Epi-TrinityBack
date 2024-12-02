@@ -1,7 +1,0 @@
-build_job:
-  stage: build
-  tags: 
-    - my-runner-name
-  script:
-    - dotnet restore
-    - dotnet build --no-restore --configuration Release
