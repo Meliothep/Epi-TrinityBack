@@ -3,8 +3,8 @@
 version: '3.4'
 
 services:
-  templateapi:
-    image: templateapi
+  customersApi:
+    image: customersApi
     build:
       context: .
       dockerfile: Customers/Dockerfile
