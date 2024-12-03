@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<testsuites time="0.240" tests="1" failures="0">
-  <testsuite id="0" name="Inventory.Tests.dll" tests="1" failures="0" time="0.240">
-    <testcase classname="Inventory.Tests.GenericUnitTest" name="Inventory.Tests.GenericUnitTest.Test" time="0.2399651" />
-  </testsuite>
-</testsuites>
