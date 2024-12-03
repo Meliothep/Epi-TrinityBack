@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<testsuites time="6.558" tests="2" failures="0">
+  <testsuite id="0" name="TrinityBack.Tests.dll" tests="2" failures="0" time="6.558">
+    <testcase classname="TrinityBack.Tests.Integration.Customers.Health.HealthTest" name="TrinityBack.Tests.Integration.Customers.Health.HealthTest.Get_Health_is_Healthy(url: &quot;/health&quot;)" time="1.1463583" />
+    <testcase classname="TrinityBack.Tests.Integration.Inventory.Health.HealthTest" name="TrinityBack.Tests.Integration.Inventory.Health.HealthTest.Get_Health_is_Healthy(url: &quot;/health&quot;)" time="5.4114068" />
+  </testsuite>
+</testsuites>
