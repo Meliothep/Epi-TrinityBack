@@ -25,5 +25,5 @@ jobs:
     - name: Build
       run: dotnet build --no-restore
     - name: Test
-      run: dotnet test --configuration Release --collect:"XPlat Code Coverage" --results-directory cobertura --test-adapter-path:. --logger "junit;LogFilePath=./junit/junit-test-result.xml;MethodFormat=Class;FailureBodyFormat=Verbose"
+      run: dotnet test
 
