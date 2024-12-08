@@ -24,4 +24,8 @@
      <InternalsVisibleTo Include="Customers.Tests" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Aspire\TrinityBack.ServiceDefaults\TrinityBack.ServiceDefaults.csproj" />
+  </ItemGroup>
+
 </Project>

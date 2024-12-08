@@ -9,6 +9,7 @@ using Serilog;
 using Serilog.Sinks.OpenTelemetry;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.AddServiceDefaults();
 
 Log.Logger = new LoggerConfiguration()
             .Enrich.FromLogContext()
