@@ -5,12 +5,21 @@ var builder = DistributedApplication.CreateBuilder(args);
 var username = builder.AddParameter("DbUsername", secret: true);
 var password = builder.AddParameter("Dbpassword", secret: true);
 
-var postgres = builder.AddPostgres("customerPostgres", username, password, 5432);
-var postgresdb = postgres.AddDatabase("CustomersDB");
+var kafka = builder.AddKafka("kafka",9092);
 
+var Cpostgres = builder.AddPostgres("customerPostgres", username, password, 5432);
+var Cpostgresdb = Cpostgres.AddDatabase("CustomersDB");
 
 builder.AddProject<Projects.Customers>("customer")
-        .WithExternalHttpEndpoints()
-        .WithReference(postgresdb);
+        .WithReference(kafka)
+        .WithReference(Cpostgresdb);
+
+
+var Ipostgres = builder.AddPostgres("InventoryPostgres", username, password, 5433);
+var Ipostgresdb = Ipostgres.AddDatabase("InventoryDB");
+
+builder.AddProject<Projects.Inventory>("inventory")
+        .WithReference(kafka)
+        .WithReference(Ipostgresdb);
 
 builder.Build().Run();

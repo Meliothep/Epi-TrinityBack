@@ -22,8 +22,8 @@ public abstract class IntegrationFixture<TEntryPoint> : IAsyncLifetime where TEn
         _dbContainer = new PostgreSqlBuilder()
             .WithImage("postgres:latest")
             .WithDatabase(ProjectName + "DB")
-            .WithUsername(ProjectName)
-            .WithPassword(ProjectName + "Secured")
+            .WithUsername("Trinity")
+            .WithPassword("Trinity" + "Secured")
             .WithPortBinding(ProjectDBPort, 5432)
             .Build();
     }

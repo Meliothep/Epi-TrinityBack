@@ -23,6 +23,6 @@ services:
     volumes:
       - ~/apps/postgres:/var/lib/postgresql/data
     environment:
-      - POSTGRES_PASSWORD=CustomersSecured
-      - POSTGRES_USER=Customers
+      - POSTGRES_PASSWORD=TrinitySecured
+      - POSTGRES_USER=Trinity
       - POSTGRES_DB=CustomersDB
