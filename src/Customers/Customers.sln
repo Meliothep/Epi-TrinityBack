@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Customers", "Customers\Cust
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Customers.Tests", "Customers.Tests\Customers.Tests.csproj", "{B1173715-C46A-44B6-A5D7-C0B030CF90D0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Trinity.ServiceDefault", "..\Trinity.ServiceDefault\Trinity.ServiceDefault.csproj", "{42009294-2623-4CBA-9747-CD9EAF9AC792}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{B1173715-C46A-44B6-A5D7-C0B030CF90D0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B1173715-C46A-44B6-A5D7-C0B030CF90D0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B1173715-C46A-44B6-A5D7-C0B030CF90D0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{42009294-2623-4CBA-9747-CD9EAF9AC792}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{42009294-2623-4CBA-9747-CD9EAF9AC792}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{42009294-2623-4CBA-9747-CD9EAF9AC792}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{42009294-2623-4CBA-9747-CD9EAF9AC792}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

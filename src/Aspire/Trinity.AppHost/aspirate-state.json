@@ -1,0 +1,41 @@
+{
+  "projectPath": ".",
+  "outputPath": "aspirate-output",
+  "containerImageTags": [
+    "latest"
+  ],
+  "containerBuilder": "docker",
+  "outputFormat": "compose",
+  "privateRegistryEmail": "aspir8@aka.ms",
+  "includeDashboard": true,
+  "secrets": {
+    "salt": "TGu577QW8GBrtz9w",
+    "hash": "5Ko7cuOBuuRZdcV2UTx3V2tS8Fezz/edLxlRv9XsrZA=",
+    "secrets": {
+      "DbUsername": {
+        "value": "TGu577QW8GBrtz9wVDL1y22iupCr9S1VPyy6HdI2SzN3\u002Bks="
+      },
+      "Dbpassword": {
+        "value": "TGu577QW8GBrtz9wQ0LENYVcWl\u002BmhP8irif6LdI2SzN3\u002BksO0PyahKi1"
+      },
+      "kafka": {},
+      "customerPostgres": {
+        "POSTGRES_PASSWORD": "TGu577QW8GBrtz9wQ0LENYVcWl\u002BmhP8irif6LdI2SzN3\u002BksO0PyahKi1"
+      },
+      "CustomersDB": {},
+      "customer": {
+        "ConnectionStrings__kafka": "TGu577QW8GBrtz9w59y6zoKe7RwDmpWZ10RVes0lRDZ/tAttjK0=",
+        "ConnectionStrings__CustomersDB": "TGu577QW8GBrtz9wRNUqb/2TAPdxiVsd0Ch9Oe4rUSkj7UcuwfCCk7\u002BBfw\u002B6CRTmLfYFCTKXYGjDnAMwzPRNAB17FytbA/fjhuqqwAHs1RZNACgk/J3bX6XRrEH/G6xy/JGXEhxZ2eGmIerDQd68Jt7xnl\u002Bhu8Xc7Q=="
+      },
+      "InventoryPostgres": {
+        "POSTGRES_PASSWORD": "TGu577QW8GBrtz9wQ0LENYVcWl\u002BmhP8irif6LdI2SzN3\u002BksO0PyahKi1"
+      },
+      "InventoryDB": {},
+      "inventory": {
+        "ConnectionStrings__kafka": "TGu577QW8GBrtz9w59y6zoKe7RwDmpWZ10RVes0lRDZ/tAttjK0=",
+        "ConnectionStrings__InventoryDB": "TGu577QW8GBrtz9wTrND\u002BWFSYanu7EVf5qB9J\u002B4rUSkjx1wr0PGbmb\u002BoQBO9GgHxO75uNi\u002BRKWDCmwI4otJbFwF0GyMDSvH4ge23zUOH5ARNBDA56sSSWb7Wq1zyMZp06paAE0Mm/PSzIunRV4bCGsPzlFywpsTh650="
+      }
+    }
+  },
+  "processAllComponents": true
+}
