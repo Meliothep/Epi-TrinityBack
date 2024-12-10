@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Trinity.ServiceDefault")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b04a350d055ff72a6b5ec47c95d06989aa952ea9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b4483cf0a73c710bea65f5224b4882cc418bd5b4")]
 [assembly: System.Reflection.AssemblyProductAttribute("Trinity.ServiceDefault")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Trinity.ServiceDefault")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
