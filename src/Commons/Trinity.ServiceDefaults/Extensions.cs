@@ -28,7 +28,11 @@ public static class Extensions
 
         builder.ConfigureScalar();
 
-        builder.AddSeqEndpoint("seq");
+        builder.AddSeqEndpoint("seq", static settings => 
+            {
+                settings.DisableHealthChecks  = true;
+                settings.ServerUrl = "http://localhost:5341";
+            });
 
         builder.ConfigureSerilog();
 
@@ -111,7 +115,7 @@ public static class Extensions
         var npgSqlString = builder.Configuration["ConnectionStrings:DefaultConnection"];
 
         builder.Services.AddHealthChecks()
-            .AddKafka(producerConfig, "logs")
+            .AddKafka(producerConfig, "default")
             .AddNpgSql(npgSqlString!);
 
         return builder;

@@ -11,9 +11,9 @@
         }
       }
     },
-    "Dbpassword": {
+    "DbPassword": {
       "type": "parameter.v0",
-      "value": "{Dbpassword.inputs.value}",
+      "value": "{DbPassword.inputs.value}",
       "inputs": {
         "value": {
           "type": "string",
@@ -47,13 +47,13 @@
     },
     "customerPostgres": {
       "type": "container.v0",
-      "connectionString": "Host={customerPostgres.bindings.tcp.host};Port={customerPostgres.bindings.tcp.port};Username={DbUsername.value};Password={Dbpassword.value}",
+      "connectionString": "Host={customerPostgres.bindings.tcp.host};Port={customerPostgres.bindings.tcp.port};Username={DbUsername.value};Password={DbPassword.value}",
       "image": "docker.io/library/postgres:17.0",
       "env": {
         "POSTGRES_HOST_AUTH_METHOD": "scram-sha-256",
         "POSTGRES_INITDB_ARGS": "--auth-host=scram-sha-256 --auth-local=scram-sha-256",
         "POSTGRES_USER": "{DbUsername.value}",
-        "POSTGRES_PASSWORD": "{Dbpassword.value}"
+        "POSTGRES_PASSWORD": "{DbPassword.value}"
       },
       "bindings": {
         "tcp": {
@@ -64,13 +64,13 @@
         }
       }
     },
-    "CustomersDB": {
+    "customersDB": {
       "type": "value.v0",
-      "connectionString": "{customerPostgres.connectionString};Database=CustomersDB"
+      "connectionString": "{customerPostgres.connectionString};Database=customersDB"
     },
     "customer": {
       "type": "project.v0",
-      "path": "../../Customers/Customers/Customers.csproj",
+      "path": "../Customers/Customers/Customers.csproj",
       "env": {
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
@@ -78,7 +78,8 @@
         "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
         "HTTP_PORTS": "{customer.bindings.http.targetPort}",
         "ConnectionStrings__kafka": "{kafka.connectionString}",
-        "ConnectionStrings__CustomersDB": "{CustomersDB.connectionString}"
+        "ConnectionStrings__customersDB": "{customersDB.connectionString}",
+        "ConnectionStrings__seq": "{seq.connectionString}"
       },
       "bindings": {
         "http": {
@@ -93,15 +94,15 @@
         }
       }
     },
-    "InventoryPostgres": {
+    "inventoryPostgres": {
       "type": "container.v0",
-      "connectionString": "Host={InventoryPostgres.bindings.tcp.host};Port={InventoryPostgres.bindings.tcp.port};Username={DbUsername.value};Password={Dbpassword.value}",
+      "connectionString": "Host={inventoryPostgres.bindings.tcp.host};Port={inventoryPostgres.bindings.tcp.port};Username={DbUsername.value};Password={DbPassword.value}",
       "image": "docker.io/library/postgres:17.0",
       "env": {
         "POSTGRES_HOST_AUTH_METHOD": "scram-sha-256",
         "POSTGRES_INITDB_ARGS": "--auth-host=scram-sha-256 --auth-local=scram-sha-256",
         "POSTGRES_USER": "{DbUsername.value}",
-        "POSTGRES_PASSWORD": "{Dbpassword.value}"
+        "POSTGRES_PASSWORD": "{DbPassword.value}"
       },
       "bindings": {
         "tcp": {
@@ -113,13 +114,13 @@
         }
       }
     },
-    "InventoryDB": {
+    "inventoryDB": {
       "type": "value.v0",
-      "connectionString": "{InventoryPostgres.connectionString};Database=InventoryDB"
+      "connectionString": "{inventoryPostgres.connectionString};Database=inventoryDB"
     },
     "inventory": {
       "type": "project.v0",
-      "path": "../../Inventory/Inventory/Inventory.csproj",
+      "path": "../Inventory/Inventory/Inventory.csproj",
       "env": {
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EXCEPTION_LOG_ATTRIBUTES": "true",
         "OTEL_DOTNET_EXPERIMENTAL_OTLP_EMIT_EVENT_LOG_ATTRIBUTES": "true",
@@ -127,7 +128,8 @@
         "ASPNETCORE_FORWARDEDHEADERS_ENABLED": "true",
         "HTTP_PORTS": "{inventory.bindings.http.targetPort}",
         "ConnectionStrings__kafka": "{kafka.connectionString}",
-        "ConnectionStrings__InventoryDB": "{InventoryDB.connectionString}"
+        "ConnectionStrings__inventoryDB": "{inventoryDB.connectionString}",
+        "ConnectionStrings__seq": "{seq.connectionString}"
       },
       "bindings": {
         "http": {

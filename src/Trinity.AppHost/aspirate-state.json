@@ -9,31 +9,36 @@
   "privateRegistryEmail": "aspir8@aka.ms",
   "includeDashboard": true,
   "secrets": {
-    "salt": "TGu577QW8GBrtz9w",
-    "hash": "5Ko7cuOBuuRZdcV2UTx3V2tS8Fezz/edLxlRv9XsrZA=",
+    "salt": "O8DRCLYqrNgb3TzK",
+    "hash": "Hidtbm7yjUOMVzCYn9kSkEaJeYvs6ueQ/dnCQU86uyY=",
     "secrets": {
       "DbUsername": {
-        "value": "TGu577QW8GBrtz9wVDL1y22iupCr9S1VPyy6HdI2SzN3\u002Bks="
+        "value": "O8DRCLYqrNgb3TzK8V9Sl7gMb/EG2wxdsUIkMNaatofLTwo="
       },
-      "Dbpassword": {
-        "value": "TGu577QW8GBrtz9wQ0LENYVcWl\u002BmhP8irif6LdI2SzN3\u002BksO0PyahKi1"
+      "DbPassword": {
+        "value": "O8DRCLYqrNgb3TzK1P3Z9ikgkgVYaQvW7TpootaatofLTwqN17DEq\u002Bkb"
       },
       "kafka": {},
       "customerPostgres": {
-        "POSTGRES_PASSWORD": "TGu577QW8GBrtz9wQ0LENYVcWl\u002BmhP8irif6LdI2SzN3\u002BksO0PyahKi1"
+        "POSTGRES_PASSWORD": "O8DRCLYqrNgb3TzK1P3Z9ikgkgVYaQvW7TpootaatofLTwqN17DEq\u002Bkb"
       },
-      "CustomersDB": {},
+      "customersDB": {},
       "customer": {
-        "ConnectionStrings__kafka": "TGu577QW8GBrtz9w59y6zoKe7RwDmpWZ10RVes0lRDZ/tAttjK0=",
-        "ConnectionStrings__CustomersDB": "TGu577QW8GBrtz9wRNUqb/2TAPdxiVsd0Ch9Oe4rUSkj7UcuwfCCk7\u002BBfw\u002B6CRTmLfYFCTKXYGjDnAMwzPRNAB17FytbA/fjhuqqwAHs1RZNACgk/J3bX6XRrEH/G6xy/JGXEhxZ2eGmIerDQd68Jt7xnl\u002Bhu8Xc7Q=="
+        "ConnectionStrings__kafka": "O8DRCLYqrNgb3TzKGpyVexkPZHIWuS4iLaKr\u002BOmJuYLDAUrui\u002BE=",
+        "ConnectionStrings__customersDB": "O8DRCLYqrNgb3TzKhTuG4v\u002Beim1S7n/Q2dtqjcqHrJ2fWAatxrzcvP4vB6km7ZuCvmSGhP0UTLoObwnKdZx\u002Bq8AjwDfQS3\u002B1V/0c5FxHrcUdWB94PIMt3FB2MLg8a2qkjDGA1rgSysZGzOKTnnVqc13SS\u002BJyHLhGEQ==",
+        "ConnectionStrings__seq": "O8DRCLYqrNgb3TzKDtsexj8xbqygdjBD/fHc8vmbupiMWByw3LbSreUQBokm\u002BICJqiI="
       },
       "InventoryPostgres": {
-        "POSTGRES_PASSWORD": "TGu577QW8GBrtz9wQ0LENYVcWl\u002BmhP8irif6LdI2SzN3\u002BksO0PyahKi1"
+        "POSTGRES_PASSWORD": "O8DRCLYqrNgb3TzK1P3Z9ikgkgVYaQvW7TpootaatofLTwqN17DEq\u002Bkb"
       },
-      "InventoryDB": {},
+      "inventoryDB": {},
       "inventory": {
-        "ConnectionStrings__kafka": "TGu577QW8GBrtz9w59y6zoKe7RwDmpWZ10RVes0lRDZ/tAttjK0=",
-        "ConnectionStrings__InventoryDB": "TGu577QW8GBrtz9wTrND\u002BWFSYanu7EVf5qB9J\u002B4rUSkjx1wr0PGbmb\u002BoQBO9GgHxO75uNi\u002BRKWDCmwI4otJbFwF0GyMDSvH4ge23zUOH5ARNBDA56sSSWb7Wq1zyMZp06paAE0Mm/PSzIunRV4bCGsPzlFywpsTh650="
+        "ConnectionStrings__kafka": "O8DRCLYqrNgb3TzKGpyVexkPZHIWuS4iLaKr\u002BOmJuYLDAUrui\u002BE=",
+        "ConnectionStrings__inventoryDB": "O8DRCLYqrNgb3TzK9zIqPBxsK\u002B9sTj5vnnfl28qHrJ2fUh2o173Ftv4GOLUh/o6VqCztu\u002BASBbIPaAjCG7povNwszD\u002BIIlmuUPoB6R4snNcdXAdlKtpE\u002BktxN6UxQVyimjaX1\u002Bdt79NTz\u002BGBiC00b0DQQeFjAbl7F3s=",
+        "ConnectionStrings__seq": "O8DRCLYqrNgb3TzKDtsexj8xbqygdjBD/fHc8vmbupiMWByw3LbSreUQBokm\u002BICJqiI="
+      },
+      "inventoryPostgres": {
+        "POSTGRES_PASSWORD": "O8DRCLYqrNgb3TzK1P3Z9ikgkgVYaQvW7TpootaatofLTwqN17DEq\u002Bkb"
       }
     }
   },

@@ -29,8 +29,8 @@ services:
     environment:
       POSTGRES_HOST_AUTH_METHOD: "scram-sha-256"
       POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256 --auth-local=scram-sha-256"
-      POSTGRES_USER: "trinity"
-      POSTGRES_PASSWORD: "trinitySecured"
+      POSTGRES_USER: "Trinity"
+      POSTGRES_PASSWORD: "TrinitySecured"
       OTEL_EXPORTER_OTLP_ENDPOINT: "http://aspire-dashboard:18889"
       OTEL_SERVICE_NAME: "customerPostgres"
     ports:
@@ -47,7 +47,8 @@ services:
       ASPNETCORE_FORWARDEDHEADERS_ENABLED: "true"
       HTTP_PORTS: "8080"
       ConnectionStrings__kafka: "kafka:9092"
-      ConnectionStrings__CustomersDB: "Host=customerPostgres;Port=5432;Username=trinity;Password=trinitySecured;Database=CustomersDB"
+      ConnectionStrings__customersDB: "Host=customerPostgres;Port=5432;Username=Trinity;Password=TrinitySecured;Database=customersDB"
+      ConnectionStrings__seq: "{seq.connectionString}"
       OTEL_EXPORTER_OTLP_ENDPOINT: "http://aspire-dashboard:18889"
       OTEL_SERVICE_NAME: "customer"
     ports:
@@ -56,16 +57,16 @@ services:
     - target: 8443
       published: 10001
     restart: unless-stopped
-  InventoryPostgres:
-    container_name: "InventoryPostgres"
+  inventoryPostgres:
+    container_name: "inventoryPostgres"
     image: "docker.io/library/postgres:17.0"
     environment:
       POSTGRES_HOST_AUTH_METHOD: "scram-sha-256"
       POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256 --auth-local=scram-sha-256"
-      POSTGRES_USER: "trinity"
-      POSTGRES_PASSWORD: "trinitySecured"
+      POSTGRES_USER: "Trinity"
+      POSTGRES_PASSWORD: "TrinitySecured"
       OTEL_EXPORTER_OTLP_ENDPOINT: "http://aspire-dashboard:18889"
-      OTEL_SERVICE_NAME: "InventoryPostgres"
+      OTEL_SERVICE_NAME: "inventoryPostgres"
     ports:
     - target: 5432
       published: 5433
@@ -80,7 +81,8 @@ services:
       ASPNETCORE_FORWARDEDHEADERS_ENABLED: "true"
       HTTP_PORTS: "8080"
       ConnectionStrings__kafka: "kafka:9092"
-      ConnectionStrings__InventoryDB: "Host=InventoryPostgres;Port=5433;Username=trinity;Password=trinitySecured;Database=InventoryDB"
+      ConnectionStrings__inventoryDB: "Host=inventoryPostgres;Port=5433;Username=Trinity;Password=TrinitySecured;Database=inventoryDB"
+      ConnectionStrings__seq: "{seq.connectionString}"
       OTEL_EXPORTER_OTLP_ENDPOINT: "http://aspire-dashboard:18889"
       OTEL_SERVICE_NAME: "inventory"
     ports:

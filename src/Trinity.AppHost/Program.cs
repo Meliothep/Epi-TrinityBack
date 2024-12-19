@@ -28,7 +28,7 @@ builder.AddProject<Projects.Customers>("customer")
         .WaitFor(seq);
 
 
-postgres = builder.AddPostgres("InventoryPostgres", dbUsername, dbPassword, 5433);
+postgres = builder.AddPostgres("inventoryPostgres", dbUsername, dbPassword, 5433);
 postgresdb = postgres.AddDatabase("inventoryDB");
 
 builder.AddProject<Projects.Inventory>("inventory")
