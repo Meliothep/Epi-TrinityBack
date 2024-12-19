@@ -5,12 +5,16 @@ using Microsoft.Extensions.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Logging;
 
 using Serilog;
-using Serilog.Sinks.OpenTelemetry;
 
 using Scalar.AspNetCore;
 
 using Confluent.Kafka;
 using HealthChecks.UI.Client;
+using OpenTelemetry.Metrics;
+using OpenTelemetry.Trace;
+using OpenTelemetry;
+using OpenTelemetry.Exporter;
+using OpenTelemetry.Logs;
 
 namespace Microsoft.Extensions.Hosting;
 
@@ -20,7 +24,11 @@ public static class Extensions
     {
         builder.Services.AddControllers();
 
+        builder.ConfigureOpenTelemetry();
+
         builder.ConfigureScalar();
+
+        builder.AddSeqEndpoint("seq");
 
         builder.ConfigureSerilog();
 
@@ -29,11 +37,54 @@ public static class Extensions
         return builder;
     }
 
-    public static IHostApplicationBuilder ConfigureScalar(this IHostApplicationBuilder builder)
+    public static WebApplication MapDefaultEndpoints(this WebApplication app)
     {
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        app.MapHealthChecks(
+            "/health",
+            new HealthCheckOptions
+            {
+                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+            });
+        
+        app.AddScalar();
+
+        return app;
+    }
+
+    public static IHostApplicationBuilder ConfigureOpenTelemetry(this IHostApplicationBuilder builder)
+    {
+        builder.Logging.AddOpenTelemetry(logging =>
+        {
+            logging.IncludeFormattedMessage = true;
+            logging.IncludeScopes = true;
+        });
+
+        builder.Services.AddOpenTelemetry()
+            .WithMetrics(metrics =>
+            {
+                metrics.AddAspNetCoreInstrumentation()
+                       .AddHttpClientInstrumentation()
+                       .AddRuntimeInstrumentation();
+            })
+            .WithTracing(tracing =>
+            {
+                tracing.AddAspNetCoreInstrumentation()
+                       .AddHttpClientInstrumentation();
+            });
+
+        builder.AddOpenTelemetryExporters();
+
+        return builder;
+    }
+
+    private static IHostApplicationBuilder AddOpenTelemetryExporters(this IHostApplicationBuilder builder)
+    {
+        var useOtlpExporter = !string.IsNullOrWhiteSpace(builder.Configuration["OTEL_EXPORTER_OTLP_ENDPOINT"]);
+
+        if (useOtlpExporter)
+        {
+            builder.Services.AddOpenTelemetry().UseOtlpExporter();
+        }
 
         return builder;
     }
@@ -43,16 +94,6 @@ public static class Extensions
         Log.Logger = new LoggerConfiguration()
                     .Enrich.FromLogContext()
                     .WriteTo.Console()
-                    .WriteTo.OpenTelemetry( x => {
-                        x.Endpoint = ""; // TODO: GET seq otlp enpoint on appsettings (doc de aspire)
-                        x.Protocol = OtlpProtocol.HttpProtobuf;
-                        x.Headers = new Dictionary<string, string>{
-                            ["X-Seq-ApiKey"] = builder.Configuration["Seq:X-Seq-ApiKey"]
-                        };
-                        x.ResourceAttributes = new Dictionary<string, object>{
-                            ["service.name"] = "" // TODO: GET the name of the service in Appsetting
-                        };
-                    })
                     .CreateLogger();
 
         builder.Services.AddSerilog();
@@ -76,18 +117,13 @@ public static class Extensions
         return builder;
     }
 
-    public static WebApplication MapDefaultEndpoints(this WebApplication app)
+    public static IHostApplicationBuilder ConfigureScalar(this IHostApplicationBuilder builder)
     {
-        app.MapHealthChecks(
-            "/health",
-            new HealthCheckOptions
-            {
-                ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
-            });
-        
-        app.AddScalar();
+        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
+        builder.Services.AddEndpointsApiExplorer();
+        builder.Services.AddSwaggerGen();
 
-        return app;
+        return builder;
     }
     
     public static WebApplication AddScalar(this WebApplication app)
