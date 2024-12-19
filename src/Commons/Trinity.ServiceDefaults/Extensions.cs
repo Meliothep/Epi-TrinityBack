@@ -89,7 +89,7 @@ public static class Extensions
 
         return app;
     }
-
+    
     public static WebApplication AddScalar(this WebApplication app)
     {
         // Configure the HTTP request pipeline.

@@ -15,11 +15,12 @@
     <PackageReference Include="Aspire.Hosting.AppHost" Version="9.0.0" />
     <PackageReference Include="Aspire.Hosting.Kafka" Version="9.0.0" />
     <PackageReference Include="Aspire.Hosting.PostgreSQL" Version="9.0.0" />
+    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\..\Inventory\Inventory\Inventory.csproj" />
-    <ProjectReference Include="..\..\Customers\Customers\Customers.csproj" />
+    <ProjectReference Include="..\Inventory\Inventory\Inventory.csproj" />
+    <ProjectReference Include="..\Customers\Customers\Customers.csproj" />
   </ItemGroup>
 
 </Project>
