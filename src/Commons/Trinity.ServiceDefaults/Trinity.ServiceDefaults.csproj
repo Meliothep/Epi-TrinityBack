@@ -13,6 +13,8 @@
     <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="9.0.0" />
     <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="9.0.0" />
     
+    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0" />
+
     <PackageReference Include="Confluent.Kafka" Version="2.6.0" />
 
     <PackageReference Include="AspNetCore.HealthChecks.Kafka" Version="8.0.1" />
@@ -35,6 +37,10 @@
     <PackageReference Include="OpenTelemetry.Instrumentation.GrpcNetClient" Version="1.8.0-beta.1" />
     <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.9.0" />
     <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.9.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Trinity.EntityModels\Trinity.EntityModels.csproj" />
   </ItemGroup>
 
 </Project>

@@ -27,6 +27,7 @@ services:
     container_name: "customerPostgres"
     image: "docker.io/library/postgres:17.0"
     environment:
+      POSTGRES_DB: customersDB
       POSTGRES_HOST_AUTH_METHOD: "scram-sha-256"
       POSTGRES_INITDB_ARGS: "--auth-host=scram-sha-256 --auth-local=scram-sha-256"
       POSTGRES_USER: "Trinity"
