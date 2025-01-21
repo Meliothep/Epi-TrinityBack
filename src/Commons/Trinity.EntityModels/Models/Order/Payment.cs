@@ -1,15 +1,15 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Trinity.EntityModels
+namespace Trinity.EntityModels.Models
 {
     public class Payment : BaseEntity
     {
         [Key]
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public int InvoiceId { get; set; }
+        public required Invoice Invoice { get; set; }
 
         [Required]
         public decimal Amount { get; set; }
@@ -18,12 +18,6 @@ namespace Trinity.EntityModels
         public PaymentMethod Method { get; set; }
 
         [Required]
-        public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
-
-        [Required]
-        public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
-
-        // Navigation properties
-        public Invoice Invoice { get; set; }
+        public DateTime PaymentDate { get; set; } = DateTime.UtcNow;        
     }
 }

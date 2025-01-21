@@ -1,12 +1,15 @@
 using Microsoft.EntityFrameworkCore;
+using Trinity.EntityModels;
+using Trinity.EntityModels.Models;
 
-namespace Customers.DataAccess
+namespace Trinity.EntityModels.DataAccess
 {
-    public class TrinityDbContext : DbContext
+    public abstract class TrinityDbContext : DbContext
     {
-        public TrinityDbContext(DbContextOptions<TrinityDbContext> options)
-            : base(options)
-        { }
+
+        public TrinityDbContext(DbContextOptions options) : base(options)
+        {
+        }
 
         public override int SaveChanges()
         {

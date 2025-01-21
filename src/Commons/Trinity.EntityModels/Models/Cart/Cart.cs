@@ -1,16 +1,17 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Trinity.EntityModels
+namespace Trinity.EntityModels.Models
 {
-    public class Cart : BaseEntity
+    public sealed class Cart : BaseEntity
     {
         [Key]
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public User User { get; set; }
+        public required User User { get; set; }
 
-        public ICollection<CartItem> CartItems { get;}
+        [Required]
+        public required ICollection<CartItem> CartItems { get; set;}
     }
 }

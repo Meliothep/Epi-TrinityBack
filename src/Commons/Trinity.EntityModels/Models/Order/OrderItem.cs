@@ -1,18 +1,17 @@
 using System.ComponentModel.DataAnnotations;
 
-namespace Trinity.EntityModels
+namespace Trinity.EntityModels.Models
 {
     public class OrderItem : BaseEntity
     {
         [Key]
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public Order Order { get; set; }
+        public required Order Order { get; set; }
         
-
         [Required]
-        public Product Product { get; set; }
+        public required Product Product { get; set; }
 
         [Required]
         public int Quantity { get; set; }

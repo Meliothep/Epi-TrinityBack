@@ -1,32 +1,31 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace Trinity.EntityModels
+namespace Trinity.EntityModels.Models
 {
     public class Customer : BaseEntity
     {
         [Key]
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public User User { get; set; }
+        public required User User { get; set; }
 
         [Required, MaxLength(50)]
-        public string FirstName { get; set; }
+        public required string FirstName { get; set; }
 
         [Required, MaxLength(50)]
-        public string LastName { get; set; }
+        public required string LastName { get; set; }
 
         [Required, EmailAddress, MaxLength(100)]
-        public string Email { get; set; }
+        public required string Email { get; set; }
 
         [Phone, MaxLength(15)]
-        public string PhoneNumber { get; set; }
+        public required string PhoneNumber { get; set; }
 
-        public string Notes { get; set; }
+        public string? Notes { get; set; }
 
-        // Navigation properties
-        public ICollection<Address> Addresses { get; set; }
-        public ICollection<Order> Orders { get; set; }
+        public required ICollection<Address> Addresses { get; set; }
+        public required ICollection<Order> Orders { get; set; }
     }
 }

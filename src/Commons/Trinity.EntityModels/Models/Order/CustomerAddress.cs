@@ -1,14 +1,15 @@
+using System;
 using System.ComponentModel.DataAnnotations;
 
 namespace Trinity.EntityModels.Models
 {
-    public class Address : BaseEntity
+    public class CustomerAddress : BaseEntity
     {
         [Key]
         public Guid Id { get; set; }
 
         [Required]
-        public required Customer customer { get; set; }
+        public required Customer Customer { get; set; }
 
         [Required]
         [MaxLength(200)]

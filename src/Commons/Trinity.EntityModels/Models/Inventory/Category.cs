@@ -1,20 +1,20 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Trinity.EntityModels
+namespace Trinity.EntityModels.Models
 {
     public class Category : BaseEntity
     {
         [Key]
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
         [MaxLength(100)]
-        public string Name { get; set; }
+        public required string Name { get; set; }
 
-        public string Description { get; set; }
+        public string? Description { get; set; }
 
         // Navigation property
-        public ICollection<Product> Products { get; set; }
+        public required ICollection<Product> Products { get; set; }
     }
 }

@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk.Worker">
+
+  <PropertyGroup>
+    <TargetFramework>net9.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>dotnet-Trinity.MigrationService-cdc1811a-5ed4-4b48-bf73-308bb8fdb07c</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
+    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Commons\Trinity.EntityModels\Trinity.EntityModels.csproj" />
+    <ProjectReference Include="..\Commons\Trinity.ServiceDefaults\Trinity.ServiceDefaults.csproj" />
+  </ItemGroup>
+</Project>

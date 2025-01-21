@@ -2,28 +2,26 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace Trinity.EntityModels
+namespace Trinity.EntityModels.Models
 {
     public class Order : BaseEntity
     {
         [Key]
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
 
         [Required]
-        public int CustomerId { get; set; }
+        public required Customer Customer { get; set; }
 
         [Required]
         public OrderStatus Status { get; set; } = OrderStatus.Pending;
 
+        public required ICollection<OrderItem> OrderItems { get; set; }
+
         [Required]
         public decimal TotalAmount { get; set; }
 
-        public int ShippingAddressId { get; set; }
+        public required CustomerAddress ShippingAddressId { get; set; }
 
-        public int BillingAddressId { get; set; }
-
-        // Navigation properties
-        public Customer Customer { get; set; }
-        public ICollection<OrderItem> OrderItems { get; set; }
+        public required CustomerAddress BillingAddressId { get; set; }
     }
 }
