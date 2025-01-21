@@ -9,117 +9,117 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = IdentityServerAspNetIdentity
 build_property.RootNamespace = IdentityServerAspNetIdentity
-build_property.ProjectDir = C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\
+build_property.ProjectDir = c:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity
+build_property.MSBuildProjectDirectory = c:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity
 build_property._RazorSourceGeneratorDebug = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Account/AccessDenied.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Account/AccessDenied.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxBY2Nlc3NEZW5pZWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Account/Login/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Account/Login/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dpblxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Account/Logout/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Account/Logout/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dvdXRcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Account/Logout/LoggedOut.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Account/Logout/LoggedOut.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQWNjb3VudFxMb2dvdXRcTG9nZ2VkT3V0LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Ciba/All.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Ciba/All.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2liYVxBbGwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Ciba/Consent.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Ciba/Consent.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2liYVxDb25zZW50LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Ciba/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Ciba/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2liYVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Ciba/_ScopeListItem.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Ciba/_ScopeListItem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ2liYVxfU2NvcGVMaXN0SXRlbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Consent/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Consent/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc2VudFxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Consent/_ScopeListItem.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Consent/_ScopeListItem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcQ29uc2VudFxfU2NvcGVMaXN0SXRlbS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Device/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Device/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2aWNlXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Device/Success.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Device/Success.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2aWNlXFN1Y2Nlc3MuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Device/_ScopeListItem.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Device/_ScopeListItem.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGV2aWNlXF9TY29wZUxpc3RJdGVtLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Diagnostics/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Diagnostics/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRGlhZ25vc3RpY3NcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/ExternalLogin/Callback.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/ExternalLogin/Callback.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXh0ZXJuYWxMb2dpblxDYWxsYmFjay5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/ExternalLogin/Challenge.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/ExternalLogin/Challenge.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXh0ZXJuYWxMb2dpblxDaGFsbGVuZ2UuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Grants/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Grants/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcR3JhbnRzXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Home/Error/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Home/Error/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSG9tZVxFcnJvclxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Redirect/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Redirect/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcUmVkaXJlY3RcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/ServerSideSessions/Index.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/ServerSideSessions/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2VydmVyU2lkZVNlc3Npb25zXEluZGV4LmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Shared/_Layout.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Shared/_Nav.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Shared/_Nav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9OYXYuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Shared/_ValidationSummary.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/Shared/_ValidationSummary.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU3VtbWFyeS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/_ViewImports.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/_ViewStart.cshtml]
+[c:/Users/Girar/Desktop/Epitech/Trinity/Epi-TrinityBack/src/IdentityServerAspNetIdentity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 

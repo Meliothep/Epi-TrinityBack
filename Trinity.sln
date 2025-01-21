@@ -29,6 +29,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory", "src\Inventory\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Inventory.Tests", "src\Inventory\Inventory.Tests\Inventory.Tests.csproj", "{7D4D41FC-A998-4B5C-A711-CA250A6994CE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityServerAspNetIdentity", "src\IdentityServerAspNetIdentity\IdentityServerAspNetIdentity.csproj", "{8DB8791B-EFA0-4FCF-B9B4-BB7FDDBA9554}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -70,6 +72,10 @@ Global
 		{7D4D41FC-A998-4B5C-A711-CA250A6994CE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7D4D41FC-A998-4B5C-A711-CA250A6994CE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7D4D41FC-A998-4B5C-A711-CA250A6994CE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8DB8791B-EFA0-4FCF-B9B4-BB7FDDBA9554}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8DB8791B-EFA0-4FCF-B9B4-BB7FDDBA9554}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8DB8791B-EFA0-4FCF-B9B4-BB7FDDBA9554}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8DB8791B-EFA0-4FCF-B9B4-BB7FDDBA9554}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{0F14307A-D004-4103-98D7-CB01D277EA6C} = {7E91E428-9307-4783-A472-FEADDFF5C10E}
@@ -83,5 +89,6 @@ Global
 		{D7A1C0E0-DC0A-4A0A-812E-58CCB5CC69A6} = {ACFCD840-5159-451F-B3D9-D84467C47783}
 		{7A941A51-20CC-446B-A479-AE23B8BC93BB} = {D7A1C0E0-DC0A-4A0A-812E-58CCB5CC69A6}
 		{7D4D41FC-A998-4B5C-A711-CA250A6994CE} = {D7A1C0E0-DC0A-4A0A-812E-58CCB5CC69A6}
+		{8DB8791B-EFA0-4FCF-B9B4-BB7FDDBA9554} = {ACFCD840-5159-451F-B3D9-D84467C47783}
 	EndGlobalSection
 EndGlobal
