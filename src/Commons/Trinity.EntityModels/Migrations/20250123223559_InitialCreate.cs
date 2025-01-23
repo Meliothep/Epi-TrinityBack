@@ -12,7 +12,7 @@ namespace Trinity.EntityModels.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Brands",
+                name: "Brand",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -22,11 +22,11 @@ namespace Trinity.EntityModels.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Brands", x => x.Id);
+                    table.PrimaryKey("PK_Brand", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Categories",
+                name: "Category",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -37,7 +37,7 @@ namespace Trinity.EntityModels.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Categories", x => x.Id);
+                    table.PrimaryKey("PK_Category", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -55,7 +55,7 @@ namespace Trinity.EntityModels.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Products",
+                name: "Product",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -74,37 +74,17 @@ namespace Trinity.EntityModels.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Products", x => x.Id);
+                    table.PrimaryKey("PK_Product", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Products_Brands_BrandId",
+                        name: "FK_Product_Brand_BrandId",
                         column: x => x.BrandId,
-                        principalTable: "Brands",
+                        principalTable: "Brand",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Products_Categories_CategoryId",
+                        name: "FK_Product_Category_CategoryId",
                         column: x => x.CategoryId,
-                        principalTable: "Categories",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Carts",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    UserId = table.Column<Guid>(type: "uuid", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Carts", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Carts_Users_UserId",
-                        column: x => x.UserId,
-                        principalTable: "Users",
+                        principalTable: "Category",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -135,34 +115,6 @@ namespace Trinity.EntityModels.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CartItems",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    CartId = table.Column<Guid>(type: "uuid", nullable: false),
-                    ProductId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Quantity = table.Column<int>(type: "integer", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_CartItems", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_CartItems_Carts_CartId",
-                        column: x => x.CartId,
-                        principalTable: "Carts",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_CartItems_Products_ProductId",
-                        column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Addresses",
                 columns: table => new
                 {
@@ -187,7 +139,7 @@ namespace Trinity.EntityModels.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "CustomerAddresses",
+                name: "CustomerAddress",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -201,9 +153,9 @@ namespace Trinity.EntityModels.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_CustomerAddresses", x => x.Id);
+                    table.PrimaryKey("PK_CustomerAddress", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_CustomerAddresses_Customers_CustomerId",
+                        name: "FK_CustomerAddress_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
@@ -211,7 +163,7 @@ namespace Trinity.EntityModels.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Orders",
+                name: "Order",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -225,21 +177,21 @@ namespace Trinity.EntityModels.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.Id);
+                    table.PrimaryKey("PK_Order", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Orders_CustomerAddresses_BillingAddressIdId",
+                        name: "FK_Order_CustomerAddress_BillingAddressIdId",
                         column: x => x.BillingAddressIdId,
-                        principalTable: "CustomerAddresses",
+                        principalTable: "CustomerAddress",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_CustomerAddresses_ShippingAddressIdId",
+                        name: "FK_Order_CustomerAddress_ShippingAddressIdId",
                         column: x => x.ShippingAddressIdId,
-                        principalTable: "CustomerAddresses",
+                        principalTable: "CustomerAddress",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Orders_Customers_CustomerId",
+                        name: "FK_Order_Customers_CustomerId",
                         column: x => x.CustomerId,
                         principalTable: "Customers",
                         principalColumn: "Id",
@@ -247,29 +199,7 @@ namespace Trinity.EntityModels.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Invoices",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    OrderId = table.Column<Guid>(type: "uuid", nullable: false),
-                    InvoiceDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    PaymentStatus = table.Column<int>(type: "integer", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Invoices", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Invoices_Orders_OrderId",
-                        column: x => x.OrderId,
-                        principalTable: "Orders",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "OrderItems",
+                name: "OrderItem",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uuid", nullable: false),
@@ -283,40 +213,17 @@ namespace Trinity.EntityModels.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_OrderItems", x => x.Id);
+                    table.PrimaryKey("PK_OrderItem", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Orders_OrderId",
+                        name: "FK_OrderItem_Order_OrderId",
                         column: x => x.OrderId,
-                        principalTable: "Orders",
+                        principalTable: "Order",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_OrderItems_Products_ProductId",
+                        name: "FK_OrderItem_Product_ProductId",
                         column: x => x.ProductId,
-                        principalTable: "Products",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Payments",
-                columns: table => new
-                {
-                    Id = table.Column<Guid>(type: "uuid", nullable: false),
-                    InvoiceId = table.Column<Guid>(type: "uuid", nullable: false),
-                    Amount = table.Column<decimal>(type: "numeric", nullable: false),
-                    Method = table.Column<int>(type: "integer", nullable: false),
-                    PaymentDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    CreatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true),
-                    UpdatedAt = table.Column<DateTime>(type: "timestamp with time zone", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Payments", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Payments_Invoices_InvoiceId",
-                        column: x => x.InvoiceId,
-                        principalTable: "Invoices",
+                        principalTable: "Product",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -327,23 +234,8 @@ namespace Trinity.EntityModels.Migrations
                 column: "customerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_CartItems_CartId",
-                table: "CartItems",
-                column: "CartId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CartItems_ProductId",
-                table: "CartItems",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Carts_UserId",
-                table: "Carts",
-                column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_CustomerAddresses_CustomerId",
-                table: "CustomerAddresses",
+                name: "IX_CustomerAddress_CustomerId",
+                table: "CustomerAddress",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
@@ -352,48 +244,38 @@ namespace Trinity.EntityModels.Migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Invoices_OrderId",
-                table: "Invoices",
-                column: "OrderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_OrderId",
-                table: "OrderItems",
-                column: "OrderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_OrderItems_ProductId",
-                table: "OrderItems",
-                column: "ProductId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Orders_BillingAddressIdId",
-                table: "Orders",
+                name: "IX_Order_BillingAddressIdId",
+                table: "Order",
                 column: "BillingAddressIdId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_CustomerId",
-                table: "Orders",
+                name: "IX_Order_CustomerId",
+                table: "Order",
                 column: "CustomerId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Orders_ShippingAddressIdId",
-                table: "Orders",
+                name: "IX_Order_ShippingAddressIdId",
+                table: "Order",
                 column: "ShippingAddressIdId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Payments_InvoiceId",
-                table: "Payments",
-                column: "InvoiceId");
+                name: "IX_OrderItem_OrderId",
+                table: "OrderItem",
+                column: "OrderId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_BrandId",
-                table: "Products",
+                name: "IX_OrderItem_ProductId",
+                table: "OrderItem",
+                column: "ProductId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Product_BrandId",
+                table: "Product",
                 column: "BrandId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Products_CategoryId",
-                table: "Products",
+                name: "IX_Product_CategoryId",
+                table: "Product",
                 column: "CategoryId");
         }
 
@@ -404,34 +286,22 @@ namespace Trinity.EntityModels.Migrations
                 name: "Addresses");
 
             migrationBuilder.DropTable(
-                name: "CartItems");
+                name: "OrderItem");
 
             migrationBuilder.DropTable(
-                name: "OrderItems");
+                name: "Order");
 
             migrationBuilder.DropTable(
-                name: "Payments");
+                name: "Product");
 
             migrationBuilder.DropTable(
-                name: "Carts");
+                name: "CustomerAddress");
 
             migrationBuilder.DropTable(
-                name: "Products");
+                name: "Brand");
 
             migrationBuilder.DropTable(
-                name: "Invoices");
-
-            migrationBuilder.DropTable(
-                name: "Brands");
-
-            migrationBuilder.DropTable(
-                name: "Categories");
-
-            migrationBuilder.DropTable(
-                name: "Orders");
-
-            migrationBuilder.DropTable(
-                name: "CustomerAddresses");
+                name: "Category");
 
             migrationBuilder.DropTable(
                 name: "Customers");

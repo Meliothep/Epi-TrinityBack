@@ -22,9 +22,18 @@ public static class Extensions
 {
     public static IHostApplicationBuilder AddServiceDefaults(this IHostApplicationBuilder builder)
     {
-        builder.Services.AddControllers();
-
+        
         builder.ConfigureOpenTelemetry();
+
+        builder.ConfigureSerilog();
+
+        return builder;
+    }
+
+    public static IHostApplicationBuilder AddApiDefaults(this IHostApplicationBuilder builder)
+    {
+        
+        builder.Services.AddControllers();
 
         builder.ConfigureScalar();
 
@@ -33,8 +42,6 @@ public static class Extensions
                 settings.DisableHealthChecks  = true;
                 settings.ServerUrl = "http://localhost:5341";
             });
-
-        builder.ConfigureSerilog();
 
         builder.AddDefaultHealthChecks();
 

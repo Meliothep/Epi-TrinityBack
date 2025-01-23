@@ -11,9 +11,8 @@ namespace Trinity.EntityModels.DataAccess
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
 
-        public InventoryDbContext(DbContextOptions<InventoryDbContext> options)
-            : base(options: options)
-        { 
+        public InventoryDbContext(DbContextOptions options) : base(options)
+        {
         }
     }
 }

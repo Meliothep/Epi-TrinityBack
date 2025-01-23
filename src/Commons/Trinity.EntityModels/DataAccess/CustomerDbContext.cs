@@ -11,9 +11,8 @@ namespace Trinity.EntityModels.DataAccess
         public DbSet<Address> Addresses { get; set; }
         public DbSet<Customer> Customers { get; set; }
 
-        public CustomerDbContext(DbContextOptions<CustomerDbContext> options)
-            : base(options: options)
-        { 
+        public CustomerDbContext(DbContextOptions options) : base(options)
+        {
         }
     }
 }

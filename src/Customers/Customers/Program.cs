@@ -6,6 +6,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+builder.AddApiDefaults();
+
 builder.AddNpgsqlDbContext<TrinityDbContext>("DefaultConnection");
 
 var app = builder.Build();

@@ -7,11 +7,11 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.AddServiceDefaults();
 
+builder.AddApiDefaults();
+
 builder.AddNpgsqlDbContext<InventoryDbContext>("DefaultConnection");
 
 var app = builder.Build();
-
-DatabaseInitializer.CreateDbIfNotExists(app);
 
 app.MapDefaultEndpoints();
 
