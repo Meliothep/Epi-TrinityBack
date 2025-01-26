@@ -3,11 +3,11 @@
 version: '3.4'
 
 services:
-  inventoryApi:
-    image: inventoryApi
+  cartApi:
+    image: cartApi
     build:
       context: .
-      dockerfile: Customers/Dockerfile
+      dockerfile: Cart/Dockerfile
       args:
         - configuration=Debug
     ports:

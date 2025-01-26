@@ -40,7 +40,7 @@ public static class Extensions
         builder.AddSeqEndpoint("seq", static settings => 
             {
                 settings.DisableHealthChecks  = true;
-                settings.ServerUrl = "http://localhost:5341";
+                settings.ServerUrl = "http://seq:5341";
             });
 
         builder.AddDefaultHealthChecks();
@@ -130,6 +130,7 @@ public static class Extensions
 
     public static IHostApplicationBuilder ConfigureScalar(this IHostApplicationBuilder builder)
     {
+        builder.Services.AddOpenApi();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -139,10 +140,10 @@ public static class Extensions
     
     public static WebApplication AddScalar(this WebApplication app)
     {
+        app.MapOpenApi();
         // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
-            app.MapOpenApi();
             app.MapScalarApiReference();
         }
 

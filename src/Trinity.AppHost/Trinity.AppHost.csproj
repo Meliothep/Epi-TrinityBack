@@ -23,6 +23,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Inventory\Inventory\Inventory.csproj" />
     <ProjectReference Include="..\Customers\Customers\Customers.csproj" />
+    <ProjectReference Include="..\Cart\Cart\Cart.csproj" />
     <ProjectReference Include="..\Trinity.MigrationService\Trinity.MigrationService.csproj" />
   </ItemGroup>
 

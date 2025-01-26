@@ -4,7 +4,7 @@ using Trinity.EntityModels.Models;
 
 namespace Trinity.EntityModels.DataAccess
 {
-    public abstract class TrinityDbContext : DbContext
+    public class TrinityDbContext : DbContext
     {
 
         public TrinityDbContext(DbContextOptions options) : base(options)

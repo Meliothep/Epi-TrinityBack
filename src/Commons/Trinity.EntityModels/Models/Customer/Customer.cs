@@ -26,6 +26,6 @@ namespace Trinity.EntityModels.Models
         public string? Notes { get; set; }
 
         public required ICollection<Address> Addresses { get; set; }
-        public required ICollection<Order> Orders { get; set; }
+        //public required ICollection<Order> Orders { get; set; }
     }
 }

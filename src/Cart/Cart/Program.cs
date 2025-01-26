@@ -1,4 +1,4 @@
-using Inventory.Services;
+using Cart.Services;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.Extensions.Hosting;
 using Trinity.EntityModels.DataAccess;
@@ -10,9 +10,9 @@ builder.AddServiceDefaults();
 
 builder.AddApiDefaults();
 
-builder.AddNpgsqlDbContext<InventoryDbContext>("DefaultConnection");
+builder.AddNpgsqlDbContext<CartDbContext>("DefaultConnection");
 
-builder.Services.AddHostedService<ConsumerService>(); 
+builder.Services.AddSingleton<ProducerService>();
 
 var app = builder.Build();
 
@@ -24,5 +24,5 @@ app.MapControllers();
 
 app.Run();
 
-public partial class InventoryProgram { }
+public partial class CartProgram { }
 

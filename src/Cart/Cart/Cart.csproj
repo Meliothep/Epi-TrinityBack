@@ -15,7 +15,7 @@
   </ItemGroup>
 
   <ItemGroup>
-     <InternalsVisibleTo Include="Inventory.Tests" />
+     <InternalsVisibleTo Include="Cart.Tests" />
   </ItemGroup>
 
   <ItemGroup>

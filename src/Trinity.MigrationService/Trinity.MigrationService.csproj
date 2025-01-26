@@ -13,7 +13,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Commons\Trinity.EntityModels\Trinity.EntityModels.csproj" />
     <ProjectReference Include="..\Commons\Trinity.ServiceDefaults\Trinity.ServiceDefaults.csproj" />
+
+    <ProjectReference Include="..\Customers\Customers\Customers.csproj" />
+    <ProjectReference Include="..\Inventory\Inventory\Inventory.csproj" />
+    <ProjectReference Include="..\Cart\Cart\Cart.csproj" />
   </ItemGroup>
 </Project>

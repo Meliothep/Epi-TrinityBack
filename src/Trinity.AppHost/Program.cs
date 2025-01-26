@@ -9,9 +9,6 @@ var dbPassword = builder.AddParameter("DbPassword", secret: true);
 
 var kafka = builder.AddKafka("kafka",9092);
 
-var seq = builder.AddSeq("seq")
-                 .ExcludeFromManifest();
-
 var postgres = builder.AddPostgres("customerPostgres", dbUsername, dbPassword, 5432);
 
 if(builder.Environment.IsDevelopment()){
@@ -30,9 +27,7 @@ builder.AddProject<Projects.Customers>("customer")
         .WaitFor(kafka)
         .WithReference(postgresdb)
         .WaitFor(postgresdb)
-        .WithReference(seq)
-        .WaitFor(migrationService)
-        .WaitFor(seq);
+        .WaitForCompletion(migrationService);
 
 
 postgres = builder.AddPostgres("inventoryPostgres", dbUsername, dbPassword, 5433);
@@ -45,9 +40,20 @@ builder.AddProject<Projects.Inventory>("inventory")
         .WaitFor(kafka)
         .WithReference(postgresdb)
         .WaitFor(postgresdb)
-        .WithReference(seq)
-        .WaitFor(migrationService)
-        .WaitFor(seq);
+        .WaitForCompletion(migrationService);
+
+
+postgres = builder.AddPostgres("cartPostgres", dbUsername, dbPassword, 5434);
+postgresdb = postgres.AddDatabase("cartDB");
+
+migrationService.WithReference(postgresdb).WaitFor(postgresdb);
+
+builder.AddProject<Projects.Cart>("cart")
+        .WithReference(kafka)
+        .WaitFor(kafka)
+        .WithReference(postgresdb)
+        .WaitFor(postgresdb)
+        .WaitForCompletion(migrationService);
 
 
 builder.Build().Run();

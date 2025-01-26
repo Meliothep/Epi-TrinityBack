@@ -2,21 +2,18 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Trinity.EntityModels.DataAccess;
 
 #nullable disable
 
-namespace Trinity.EntityModels.Migrations
+namespace Trinity.EntityModels.Migrations.CartDb
 {
-    [DbContext(typeof(CustomerDbContext))]
-    [Migration("20250123223559_InitialCreate")]
-    partial class InitialCreate
+    [DbContext(typeof(CartDbContext))]
+    partial class CartDbContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -86,7 +83,59 @@ namespace Trinity.EntityModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Brand");
+                    b.ToTable("Brands");
+                });
+
+            modelBuilder.Entity("Trinity.EntityModels.Models.Cart", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("Trinity.EntityModels.Models.CartItem", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("CartId")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime?>("CreatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<Guid>("ProductId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("integer");
+
+                    b.Property<DateTime?>("UpdatedAt")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("ProductId");
+
+                    b.ToTable("CartItems");
                 });
 
             modelBuilder.Entity("Trinity.EntityModels.Models.Category", b =>
@@ -111,7 +160,7 @@ namespace Trinity.EntityModels.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Category");
+                    b.ToTable("Categories");
                 });
 
             modelBuilder.Entity("Trinity.EntityModels.Models.Customer", b =>
@@ -157,122 +206,6 @@ namespace Trinity.EntityModels.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Customers");
-                });
-
-            modelBuilder.Entity("Trinity.EntityModels.Models.CustomerAddress", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("City")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("character varying(100)");
-
-                    b.Property<string>("Country")
-                        .IsRequired()
-                        .HasMaxLength(50)
-                        .HasColumnType("character varying(50)");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("PostalCode")
-                        .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("character varying(20)");
-
-                    b.Property<string>("Street")
-                        .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("character varying(200)");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CustomerId");
-
-                    b.ToTable("CustomerAddress");
-                });
-
-            modelBuilder.Entity("Trinity.EntityModels.Models.Order", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("BillingAddressIdId")
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("CustomerId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("ShippingAddressIdId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("TotalAmount")
-                        .HasColumnType("numeric");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("BillingAddressIdId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("ShippingAddressIdId");
-
-                    b.ToTable("Order");
-                });
-
-            modelBuilder.Entity("Trinity.EntityModels.Models.OrderItem", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<DateTime?>("CreatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.Property<Guid>("OrderId")
-                        .HasColumnType("uuid");
-
-                    b.Property<Guid>("ProductId")
-                        .HasColumnType("uuid");
-
-                    b.Property<int>("Quantity")
-                        .HasColumnType("integer");
-
-                    b.Property<decimal>("TotalPrice")
-                        .HasColumnType("numeric");
-
-                    b.Property<decimal>("UnitPrice")
-                        .HasColumnType("numeric");
-
-                    b.Property<DateTime?>("UpdatedAt")
-                        .HasColumnType("timestamp with time zone");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("OrderId");
-
-                    b.HasIndex("ProductId");
-
-                    b.ToTable("OrderItem");
                 });
 
             modelBuilder.Entity("Trinity.EntityModels.Models.Product", b =>
@@ -326,7 +259,7 @@ namespace Trinity.EntityModels.Migrations
 
                     b.HasIndex("CategoryId");
 
-                    b.ToTable("Product");
+                    b.ToTable("Products");
                 });
 
             modelBuilder.Entity("Trinity.EntityModels.Models.User", b =>
@@ -360,7 +293,7 @@ namespace Trinity.EntityModels.Migrations
                     b.Navigation("customer");
                 });
 
-            modelBuilder.Entity("Trinity.EntityModels.Models.Customer", b =>
+            modelBuilder.Entity("Trinity.EntityModels.Models.Cart", b =>
                 {
                     b.HasOne("Trinity.EntityModels.Models.User", "User")
                         .WithMany()
@@ -371,49 +304,11 @@ namespace Trinity.EntityModels.Migrations
                     b.Navigation("User");
                 });
 
-            modelBuilder.Entity("Trinity.EntityModels.Models.CustomerAddress", b =>
+            modelBuilder.Entity("Trinity.EntityModels.Models.CartItem", b =>
                 {
-                    b.HasOne("Trinity.EntityModels.Models.Customer", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("Trinity.EntityModels.Models.Order", b =>
-                {
-                    b.HasOne("Trinity.EntityModels.Models.CustomerAddress", "BillingAddressId")
-                        .WithMany()
-                        .HasForeignKey("BillingAddressIdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Trinity.EntityModels.Models.Customer", "Customer")
-                        .WithMany("Orders")
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Trinity.EntityModels.Models.CustomerAddress", "ShippingAddressId")
-                        .WithMany()
-                        .HasForeignKey("ShippingAddressIdId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("BillingAddressId");
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("ShippingAddressId");
-                });
-
-            modelBuilder.Entity("Trinity.EntityModels.Models.OrderItem", b =>
-                {
-                    b.HasOne("Trinity.EntityModels.Models.Order", "Order")
-                        .WithMany("OrderItems")
-                        .HasForeignKey("OrderId")
+                    b.HasOne("Trinity.EntityModels.Models.Cart", "Cart")
+                        .WithMany("CartItems")
+                        .HasForeignKey("CartId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -423,9 +318,20 @@ namespace Trinity.EntityModels.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Order");
+                    b.Navigation("Cart");
 
                     b.Navigation("Product");
+                });
+
+            modelBuilder.Entity("Trinity.EntityModels.Models.Customer", b =>
+                {
+                    b.HasOne("Trinity.EntityModels.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("User");
                 });
 
             modelBuilder.Entity("Trinity.EntityModels.Models.Product", b =>
@@ -452,6 +358,11 @@ namespace Trinity.EntityModels.Migrations
                     b.Navigation("Products");
                 });
 
+            modelBuilder.Entity("Trinity.EntityModels.Models.Cart", b =>
+                {
+                    b.Navigation("CartItems");
+                });
+
             modelBuilder.Entity("Trinity.EntityModels.Models.Category", b =>
                 {
                     b.Navigation("Products");
@@ -460,13 +371,6 @@ namespace Trinity.EntityModels.Migrations
             modelBuilder.Entity("Trinity.EntityModels.Models.Customer", b =>
                 {
                     b.Navigation("Addresses");
-
-                    b.Navigation("Orders");
-                });
-
-            modelBuilder.Entity("Trinity.EntityModels.Models.Order", b =>
-                {
-                    b.Navigation("OrderItems");
                 });
 #pragma warning restore 612, 618
         }

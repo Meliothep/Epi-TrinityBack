@@ -25,7 +25,7 @@ services:
     environment:
       - POSTGRES_PASSWORD=TrinitySecured
       - POSTGRES_USER=Trinity
-      - POSTGRES_DB=CustomersDB
+      - POSTGRES_DB=customersDB
 
   kafka:
     image: apache/kafka:latest
