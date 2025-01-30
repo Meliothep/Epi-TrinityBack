@@ -1,0 +1,31 @@
+services:
+  customerPostgres:
+    container_name: customerpostgres
+    image: "postgres:16"
+    environment:
+      POSTGRES_USER: "Trinity"
+      POSTGRES_PASSWORD: "TrinitySecured"
+      POSTGRES_DB: "customersDB"
+      PGDATA: "/data/postgres"
+    volumes:
+       - local_pgdata:/data/postgres
+    ports:
+      - "5432:5432"
+    restart: unless-stopped
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    restart: always
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: strong-password
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
+  
+

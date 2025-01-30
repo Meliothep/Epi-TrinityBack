@@ -1,17 +1,16 @@
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Hosting;
-
-using Customers.DataAccess;
+using Trinity.EntityModels.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddServiceDefaults();
+builder.AddObservability();
 
-builder.AddNpgsqlDbContext<CustomersDbContext>("DefaultConnection");
+builder.AddRabbitMQ();
+
+builder.AddApiDefaults();
+
+builder.AddNpgsqlDbContext<CustomerDbContext>("DefaultConnection");
 
 var app = builder.Build();
-
-DatabaseInitializer.CreateDbIfNotExists(app);
 
 app.MapDefaultEndpoints();
 
