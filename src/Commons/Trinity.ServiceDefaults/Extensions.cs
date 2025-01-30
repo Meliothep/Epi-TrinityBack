@@ -137,7 +137,9 @@ public static class Extensions
         if (app.Environment.IsDevelopment())
         {
             app.MapOpenApi();
-            app.MapScalarApiReference();
+            string? scalarURL = Environment.GetEnvironmentVariable("SCALAR_URLS");
+            scalarURL = scalarURL != null ? scalarURL : app.Configuration["Urls"];
+            app.MapScalarApiReference(options =>{ options.Servers = [new ScalarServer(scalarURL!)];});
         }
 
         return app;
