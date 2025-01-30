@@ -8,24 +8,40 @@ using Serilog;
 
 using Scalar.AspNetCore;
 
-using Confluent.Kafka;
 using HealthChecks.UI.Client;
 using OpenTelemetry.Metrics;
 using OpenTelemetry.Trace;
 using OpenTelemetry;
-using OpenTelemetry.Exporter;
-using OpenTelemetry.Logs;
+using MassTransit;
 
 namespace Microsoft.Extensions.Hosting;
 
 public static class Extensions
 {
-    public static IHostApplicationBuilder AddServiceDefaults(this IHostApplicationBuilder builder)
+    public static IHostApplicationBuilder AddObservability(this IHostApplicationBuilder builder)
     {
-        
         builder.ConfigureOpenTelemetry();
 
         builder.ConfigureSerilog();
+
+        return builder;
+    }
+
+    public static IHostApplicationBuilder AddRabbitMQ(this IHostApplicationBuilder builder)
+    {
+        builder.Services.AddMassTransit(x=>{
+
+            x.UsingRabbitMq((ctx,cfg)=>{
+
+            cfg.Host(builder.Configuration["RabbitMQ:Host"],"/" , c=>
+            {
+                c.Username(builder.Configuration["RabbitMQ:Username"]);
+                c.Password(builder.Configuration["RabbitMQ:Password"]);
+            });
+            
+            cfg.ConfigureEndpoints(ctx);
+            });
+        });
 
         return builder;
     }
@@ -35,13 +51,7 @@ public static class Extensions
         
         builder.Services.AddControllers();
 
-        builder.ConfigureScalar();
-
-        builder.AddSeqEndpoint("seq", static settings => 
-            {
-                settings.DisableHealthChecks  = true;
-                settings.ServerUrl = "http://seq:5341";
-            });
+        builder.Services.AddOpenApi();
 
         builder.AddDefaultHealthChecks();
 
@@ -114,36 +124,19 @@ public static class Extensions
 
     public static IHostApplicationBuilder AddDefaultHealthChecks(this IHostApplicationBuilder builder)
     {
-        
-        var kafkaUrl = builder.Configuration["Kafka:BootstrapServers"];
-        var producerConfig = new ProducerConfig { BootstrapServers = kafkaUrl };
-        using var producer = new ProducerBuilder<Null, string>(producerConfig).Build();
-
         var npgSqlString = builder.Configuration["ConnectionStrings:DefaultConnection"];
 
         builder.Services.AddHealthChecks()
-            .AddKafka(producerConfig, "default")
             .AddNpgSql(npgSqlString!);
 
         return builder;
     }
 
-    public static IHostApplicationBuilder ConfigureScalar(this IHostApplicationBuilder builder)
-    {
-        builder.Services.AddOpenApi();
-        // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-        builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
-
-        return builder;
-    }
-    
     public static WebApplication AddScalar(this WebApplication app)
     {
-        app.MapOpenApi();
-        // Configure the HTTP request pipeline.
         if (app.Environment.IsDevelopment())
         {
+            app.MapOpenApi();
             app.MapScalarApiReference();
         }
 

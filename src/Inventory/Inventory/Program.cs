@@ -1,18 +1,16 @@
-using Inventory.Services;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Hosting;
 using Trinity.EntityModels.DataAccess;
-
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddServiceDefaults();
+builder.AddObservability();
+
+builder.AddRabbitMQ();
 
 builder.AddApiDefaults();
 
 builder.AddNpgsqlDbContext<InventoryDbContext>("DefaultConnection");
 
-builder.Services.AddHostedService<ConsumerService>(); 
+builder.AddRabbitMQ();
 
 var app = builder.Build();
 

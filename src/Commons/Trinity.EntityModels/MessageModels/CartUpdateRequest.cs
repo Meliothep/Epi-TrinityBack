@@ -1,9 +1,7 @@
 namespace Trinity.EntityModels.MessageModels
 {
-    public class InventoryUpdateRequest
+    public class CartUpdateRequest
     {
-        public int Id { get; set; }
-
         public Guid ProductId { get; set; }
 
         public int Quantity { get; set; }

@@ -3,7 +3,7 @@ using Trinity.MigrationService;
 
 var builder = Host.CreateApplicationBuilder(args);
 
-builder.AddServiceDefaults();
+builder.AddObservability();
 
 builder.Services.AddOpenTelemetry()
     .WithTracing(tracing => tracing.AddSource("Trinity.MigrationService"));

@@ -70,6 +70,5 @@ public class Worker<T>(
 
     private static async Task SeedDataAsync(TrinityDbContext dbContext, CancellationToken cancellationToken)
     {
-        
     }
 }

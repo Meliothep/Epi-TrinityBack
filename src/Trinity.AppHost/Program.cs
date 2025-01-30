@@ -7,7 +7,7 @@ var builder = DistributedApplication.CreateBuilder(args);
 var dbUsername = builder.AddParameter("DbUsername", secret: true);
 var dbPassword = builder.AddParameter("DbPassword", secret: true);
 
-var kafka = builder.AddKafka("kafka",9092);
+var broker = builder.AddRabbitMQ("broker", port : 5672 ).WithManagementPlugin();
 
 var postgres = builder.AddPostgres("customerPostgres", dbUsername, dbPassword, 5432);
 
@@ -23,8 +23,8 @@ var migrationService = builder.AddProject<Projects.Trinity_MigrationService>("mi
     .WaitFor(postgresdb);
 
 builder.AddProject<Projects.Customers>("customer")
-        .WithReference(kafka)
-        .WaitFor(kafka)
+        .WithReference(broker)
+        .WaitFor(broker)
         .WithReference(postgresdb)
         .WaitFor(postgresdb)
         .WaitForCompletion(migrationService);
@@ -36,8 +36,8 @@ postgresdb = postgres.AddDatabase("inventoryDB");
 migrationService.WithReference(postgresdb).WaitFor(postgresdb);
 
 builder.AddProject<Projects.Inventory>("inventory")
-        .WithReference(kafka)
-        .WaitFor(kafka)
+        .WithReference(broker)
+        .WaitFor(broker)
         .WithReference(postgresdb)
         .WaitFor(postgresdb)
         .WaitForCompletion(migrationService);
@@ -49,8 +49,8 @@ postgresdb = postgres.AddDatabase("cartDB");
 migrationService.WithReference(postgresdb).WaitFor(postgresdb);
 
 builder.AddProject<Projects.Cart>("cart")
-        .WithReference(kafka)
-        .WaitFor(kafka)
+        .WithReference(broker)
+        .WaitFor(broker)
         .WithReference(postgresdb)
         .WaitFor(postgresdb)
         .WaitForCompletion(migrationService);

@@ -1,18 +1,15 @@
-using Cart.Services;
-using Microsoft.AspNetCore.Diagnostics.HealthChecks;
-using Microsoft.Extensions.Hosting;
 using Trinity.EntityModels.DataAccess;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-builder.AddServiceDefaults();
+builder.AddObservability();
 
 builder.AddApiDefaults();
 
 builder.AddNpgsqlDbContext<CartDbContext>("DefaultConnection");
 
-builder.Services.AddSingleton<ProducerService>();
+builder.AddRabbitMQ();
 
 var app = builder.Build();
 
