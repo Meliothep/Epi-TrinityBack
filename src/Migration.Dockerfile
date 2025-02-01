@@ -17,12 +17,10 @@ USER app
 # Étape de construction
 FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0@sha256:3fcf6f1e809c0553f9feb222369f58749af314af6f063f389cbd2f913b4ad556 AS build
 ARG CONFIGURATION=Debug
-ARG SERVICE=Inventory
-ARG PORT=8080
 
 WORKDIR /src
 # Copier les fichiers .csproj avec leur structure correcte
-COPY ./Trinity.MigrationService ./Trinity.MigrationService
+COPY .Trinity.MigrationService .Trinity.MigrationService
 COPY ./Commons ./Commons
 
 

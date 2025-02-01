@@ -22,20 +22,20 @@ ARG PORT=8080
 
 WORKDIR /src
 # Copier les fichiers .csproj avec leur structure correcte
-COPY ./${SERVICE}/${SERVICE} ./${SERVICE}/${SERVICE}
+COPY ./Services/${SERVICE} ./Services/${SERVICE}
 COPY ./Commons ./Commons
 
 
 # Restaurer les dépendances
 WORKDIR "/src"
-RUN dotnet restore "${SERVICE}/${SERVICE}/${SERVICE}.csproj"
+RUN dotnet restore "Services/${SERVICE}/${SERVICE}.csproj"
 
 # Construire le projet
-RUN dotnet build "/src/${SERVICE}/${SERVICE}/${SERVICE}.csproj" Production -o /app/build
+RUN dotnet build "/src/Services/${SERVICE}/${SERVICE}.csproj" -c $CONFIGURATION -o /app/build
 
 # Étape de publication
 FROM build AS publish
-RUN dotnet publish "/src/${SERVICE}/${SERVICE}/${SERVICE}.csproj" -c $CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "/src/Services/${SERVICE}/${SERVICE}.csproj" -c $CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # Étape finale : préparation de l'image pour l'exécution
 FROM base AS final

@@ -27,8 +27,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="../../src/Customers/Customers/Customers.csproj" />
-    <ProjectReference Include="../../src/Inventory/Inventory/Inventory.csproj" />
+    <ProjectReference Include="../../src/Services/Customers/Customers.csproj" />
+    <ProjectReference Include="../../src/Services/Inventory/Inventory.csproj" />
   </ItemGroup>
 
 </Project>

@@ -59,7 +59,7 @@ services:
     image: customerservice
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Services.Dockerfile
       args:
         CONFIGURATION: Production
         SERVICE: Customers
@@ -97,7 +97,7 @@ services:
     image: inventoryservice
     build:
       context: .
-      dockerfile: Dockerfile
+      dockerfile: Services.Dockerfile
       args:
         CONFIGURATION: Production
         SERVICE: Inventory
