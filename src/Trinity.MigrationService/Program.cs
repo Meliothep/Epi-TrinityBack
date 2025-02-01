@@ -9,12 +9,12 @@ builder.Services.AddOpenTelemetry()
     .WithTracing(tracing => tracing.AddSource("Trinity.MigrationService"));
 
 builder.AddNpgsqlDbContext<CustomerDbContext>("CustomersDB");
-builder.AddNpgsqlDbContext<InventoryDbContext>("InventoryDB");
-builder.AddNpgsqlDbContext<CartDbContext>("CartDB");
+//builder.AddNpgsqlDbContext<InventoryDbContext>("InventoryDB");
+//builder.AddNpgsqlDbContext<CartDbContext>("CartDB");
 
 builder.Services.AddHostedService<Worker<CustomerDbContext>>();
-builder.Services.AddHostedService<Worker<InventoryDbContext>>();    
-builder.Services.AddHostedService<Worker<CartDbContext>>();
+//builder.Services.AddHostedService<Worker<InventoryDbContext>>();    
+//builder.Services.AddHostedService<Worker<CartDbContext>>();
 
 var host = builder.Build();
 

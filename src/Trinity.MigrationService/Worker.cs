@@ -35,7 +35,7 @@ public class Worker<T>(
         }
         catch (Exception ex)
         {
-            activity?.RecordException(ex);
+            activity?.AddException(ex);
             throw;
         }
 
