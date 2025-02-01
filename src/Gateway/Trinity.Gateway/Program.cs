@@ -18,13 +18,11 @@ builder.Services.AddAuthentication("Bearer")
         };
     });
 
-// Add Ocelot
+builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
 builder.Services.AddOcelot();
 
 var app = builder.Build();
 
-app.UseAuthentication(); // Add Authentication Middleware
-app.UseAuthorization();  // Add Authorization Middleware
+await app.UseOcelot();
 
-await app.UseOcelot(); // Add Ocelot Middleware
 app.Run();
