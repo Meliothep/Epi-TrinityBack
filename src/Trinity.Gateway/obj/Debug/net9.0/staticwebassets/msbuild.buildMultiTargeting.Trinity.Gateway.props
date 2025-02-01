@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Trinity.Gateway.props" />
+</Project>

@@ -123,6 +123,7 @@ public static class Extensions
 
     public static IHostApplicationBuilder ConfigureScalar(this IHostApplicationBuilder builder)
     {
+        builder.Services.AddOpenApi();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
@@ -133,9 +134,10 @@ public static class Extensions
     public static WebApplication AddScalar(this WebApplication app)
     {
         // Configure the HTTP request pipeline.
+        app.MapOpenApi();
+        
         if (app.Environment.IsDevelopment())
         {
-            app.MapOpenApi();
             app.MapScalarApiReference();
         }
 

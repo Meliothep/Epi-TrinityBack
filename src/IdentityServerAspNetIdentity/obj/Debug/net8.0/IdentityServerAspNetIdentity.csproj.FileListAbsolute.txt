@@ -6,12 +6,16 @@ C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetI
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\IdentityServerAspNetIdentity.runtimeconfig.json
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\IdentityServerAspNetIdentity.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\IdentityServerAspNetIdentity.pdb
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Duende.IdentityModel.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Duende.IdentityServer.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Duende.IdentityServer.AspNetIdentity.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Duende.IdentityServer.Storage.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\FluentValidation.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Humanizer.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\IdentityModel.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\IPAddressRange.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.Google.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.OpenIdConnect.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.Internal.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
@@ -19,6 +23,9 @@ C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetI
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.Identity.UI.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.MiddlewareAnalysis.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.AspNetCore.Mvc.NewtonsoftJson.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.Bcl.AsyncInterfaces.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.CodeAnalysis.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -30,7 +37,9 @@ C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetI
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Design.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Relational.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.EntityFrameworkCore.Sqlite.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.Extensions.DependencyModel.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.Extensions.DiagnosticAdapter.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.Extensions.FileProviders.Embedded.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.Extensions.Identity.Core.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.Extensions.Identity.Stores.dll
@@ -42,6 +51,9 @@ C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetI
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Mono.TextTemplating.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Newtonsoft.Json.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Newtonsoft.Json.Bson.dll
+C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Ocelot.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Serilog.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Serilog.AspNetCore.dll
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Serilog.Extensions.Hosting.dll
@@ -159,4 +171,3 @@ C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetI
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\obj\Debug\net8.0\IdentityServerAspNetIdentity.pdb
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\obj\Debug\net8.0\IdentityServerAspNetIdentity.genruntimeconfig.cache
 C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\obj\Debug\net8.0\ref\IdentityServerAspNetIdentity.dll
-C:\Users\Girar\Desktop\Epitech\Trinity\Epi-TrinityBack\src\IdentityServerAspNetIdentity\bin\Debug\net8.0\Duende.IdentityModel.dll
