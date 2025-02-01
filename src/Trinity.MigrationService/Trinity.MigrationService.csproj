@@ -9,14 +9,9 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="9.0.0" />
-    <PackageReference Include="Aspire.Npgsql.EntityFrameworkCore.PostgreSQL" Version="9.0.0" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Commons\Trinity.ServiceDefaults\Trinity.ServiceDefaults.csproj" />
-
-    <ProjectReference Include="..\Customers\Customers\Customers.csproj" />
-    <ProjectReference Include="..\Inventory\Inventory\Inventory.csproj" />
-    <ProjectReference Include="..\Cart\Cart\Cart.csproj" />
   </ItemGroup>
 </Project>
