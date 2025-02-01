@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Trinity.Gateway")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+5e25051b40158a33a5619c393cdb6cc980762ffc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4845271df35bd347b855f0b29e485f8a93aa965d")]
 [assembly: System.Reflection.AssemblyProductAttribute("Trinity.Gateway")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Trinity.Gateway")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
