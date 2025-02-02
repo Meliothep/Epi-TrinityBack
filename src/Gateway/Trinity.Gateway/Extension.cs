@@ -19,7 +19,7 @@ namespace Microsoft.Extensions.Hosting
                     x.RequireHttpsMetadata = false;
                     x.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
                     {
-                        ValidAudiences = new[] { "bffMorgan"}
+                        ValidAudiences = new[] { "bff"}
                     };
                 });
             //...
