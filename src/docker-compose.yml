@@ -23,6 +23,8 @@ services:
       PGADMIN_DEFAULT_PASSWORD: strong-password
     volumes:
       - pgadmin-data:/var/lib/pgadmin
+    networks:
+        - trinity-network
 
   migrationService:
     image: migrationservice
@@ -37,6 +39,8 @@ services:
       - ~/.vsdbg:/remote_debugger:rw
     depends_on:
       - customerPostgres
+    networks:
+        - trinity-network
 
 # ========== CUSTOMERS ==========
 
@@ -76,7 +80,7 @@ services:
       - migrationService
       - rabbitmq
 
-# ========== CUSTOMERS ==========
+# ========== INVENTORY ==========
 
   inventoryPostgres:
     container_name: inventorypostgres

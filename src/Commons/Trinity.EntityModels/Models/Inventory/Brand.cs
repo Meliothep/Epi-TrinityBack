@@ -10,9 +10,9 @@ namespace Trinity.EntityModels.Models
 
         [Required]
         [MaxLength(100)]
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         // Navigation property
-        public required ICollection<Product> Products { get; set; }
+        public ICollection<Product> Products { get; set; }
     }
 }

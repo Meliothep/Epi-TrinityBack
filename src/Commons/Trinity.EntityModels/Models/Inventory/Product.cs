@@ -9,23 +9,23 @@ namespace Trinity.EntityModels.Models
         public Guid Id { get; set; }
 
         [Required, MaxLength(100)]
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         public string? Description { get; set; }
 
         [Required]
-        public required Brand Brand { get; set; }
+        public Brand Brand { get; set; }
 
         [Required]
-        public required Category Category { get; set; } 
+        public Category Category { get; set; } 
 
         [MaxLength(50)]
         public string? Barcode { get; set; }
 
         [Required]
-        public required decimal Price { get; set; }
+        public decimal Price { get; set; }
 
-        public required int StockQuantity { get; set; } = 0;
+        public int StockQuantity { get; set; } = 0;
 
         public string? ImageUrl { get; set; }
 
