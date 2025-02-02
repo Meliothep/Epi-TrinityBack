@@ -4,6 +4,7 @@ using IdentityServerAspNetIdentity.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
+using Trinity.Services.Identity.Services;
 
 namespace IdentityServerAspNetIdentity;
 
@@ -20,7 +21,7 @@ internal static class HostingExtensions
             .AddEntityFrameworkStores<ApplicationDbContext>()
             .AddDefaultTokenProviders();
 
-        builder.Services
+        var isBuilder = builder.Services
             .AddIdentityServer(options =>
             {
                 options.Events.RaiseErrorEvents = true;
@@ -47,6 +48,8 @@ internal static class HostingExtensions
                 options.ClientId = "copy client ID from Google here";
                 options.ClientSecret = "copy client secret from Google here";
             });
+
+        isBuilder.AddExtensionGrantValidator<TokenExchangeExtensionGrantValidator>();
 
         return builder.Build();
     }
