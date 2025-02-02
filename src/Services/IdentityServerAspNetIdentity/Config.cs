@@ -25,7 +25,7 @@ public static class Config
     public static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]
         { 
-            new ApiScope(name: "api1", displayName: "My API")
+            new ApiScope(name: "bff", displayName: "bff")
         };
 
     public static IEnumerable<Client> Clients =>
@@ -45,7 +45,7 @@ public static class Config
                 },
 
                 // scopes that client has access to
-                AllowedScopes = { "api1" }
+                AllowedScopes = { "bff" }
             },
             // interactive ASP.NET Core Web App
             new Client
@@ -68,7 +68,7 @@ public static class Config
                     IdentityServerConstants.StandardScopes.OpenId,
                     IdentityServerConstants.StandardScopes.Profile,
                     "verification",
-                    "api1"
+                    "bff"
                 }
             }
         };

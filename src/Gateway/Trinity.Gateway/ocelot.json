@@ -14,7 +14,10 @@
       "AuthenticationOptions": {
         "AuthenticationProviderKey": "IdentityApiKey",
         "AllowedScopes": ["bff"]
-      }
+      },
+      "DelegatingHandlers": [
+        "TokenExchangeDelegatingHandler"
+      ]
     }
   ]
 }
