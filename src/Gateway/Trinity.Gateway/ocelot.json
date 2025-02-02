@@ -1,0 +1,21 @@
+{
+    "Routes": [
+      {
+        "UpstreamPathTemplate": "/customer/{everything}", 
+        "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE" ],
+        "DownstreamPathTemplate": "/{everything}",
+        "DownstreamScheme": "https",
+        "DownstreamHostAndPorts": [
+          { "Host": "localhost", "Port": 5001 } 
+        ],
+        "AuthenticationOptions": {
+          "AuthenticationProviderKey": "Bearer",
+          "AllowedScopes": [ "api1" ] 
+        }
+      }
+    ],
+    "GlobalConfiguration": {
+      "BaseUrl": "https://localhost:5000"
+    }
+  }
+  

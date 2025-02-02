@@ -1,0 +1,125 @@
+version: '3.9'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    container_name: 'rabbitmq'
+    ports:
+        - 5672:5672
+        - 15672:15672
+    volumes:
+        - ~/.docker-conf/rabbitmq/data/:/var/lib/rabbitmq/
+        - ~/.docker-conf/rabbitmq/log/:/var/log/rabbitmq
+    networks:
+        - trinity-network
+
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin4_container
+    ports:
+      - "8888:80"
+    environment:
+      PGADMIN_DEFAULT_EMAIL: user-name@domain-name.com
+      PGADMIN_DEFAULT_PASSWORD: strong-password
+    volumes:
+      - pgadmin-data:/var/lib/pgadmin
+
+  migrationService:
+    image: migrationservice
+    build:
+      context: .
+      dockerfile: Migration.Dockerfile
+      args:
+        CONFIGURATION: Production
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw
+    depends_on:
+      - customerPostgres
+
+# ========== CUSTOMERS ==========
+
+  customerPostgres:
+    container_name: customerpostgres
+    image: "postgres:16"
+    environment:
+      POSTGRES_USER: "Trinity"
+      POSTGRES_PASSWORD: "TrinitySecured"
+      POSTGRES_DB: "customersDB"
+      PGDATA: "/data/postgres"
+    volumes:
+       - local_pgdata:/data/postgres
+    ports:
+      - "5432:5432"
+    networks:
+      - trinity-network
+    
+  customerService:
+    image: customerservice
+    build:
+      context: .
+      dockerfile: Services.Dockerfile
+      args:
+        CONFIGURATION: Production
+        SERVICE: Customers
+        PORT: 5054
+    ports:
+        - 5054:5054
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+        - ~/.vsdbg:/remote_debugger:rw
+    networks:
+        - trinity-network
+    depends_on:
+      - migrationService
+      - rabbitmq
+
+# ========== CUSTOMERS ==========
+
+  inventoryPostgres:
+    container_name: inventorypostgres
+    image: "postgres:16"
+    environment:
+      POSTGRES_USER: "Trinity"
+      POSTGRES_PASSWORD: "TrinitySecured"
+      POSTGRES_DB: "inventoryDB"
+      PGDATA: "/data/postgres"
+    volumes:
+       - local_pgdata:/data/postgres
+    ports:
+      - "5433:5432"
+    networks:
+      - trinity-network
+    
+  inventoryService:
+    image: inventoryservice
+    build:
+      context: .
+      dockerfile: Services.Dockerfile
+      args:
+        CONFIGURATION: Production
+        SERVICE: Inventory
+        PORT: 5055
+    ports:
+        - 5055:5055
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+        - ~/.vsdbg:/remote_debugger:rw
+    networks:
+        - trinity-network
+    depends_on:
+      - migrationService
+      - rabbitmq
+
+networks:
+    trinity-network:
+      driver: bridge
+
+volumes:
+  local_pgdata:
+  pgadmin-data:
+  
+
