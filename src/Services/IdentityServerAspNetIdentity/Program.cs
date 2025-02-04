@@ -17,11 +17,11 @@ try
         .Enrich.FromLogContext()
         .ReadFrom.Configuration(ctx.Configuration));
 
+    var app = builder.ConfigureServices();
 
+    app.UsePathBase(new PathString("/identity"));
 
-    var app = builder
-        .ConfigureServices()
-        .ConfigurePipeline();
+    app.ConfigurePipeline();
 
     // this seeding is only for the template to bootstrap the DB and users.
     // in production you will likely want a different approach.

@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Serilog;
 using Trinity.Services.Identity.Services;
+using Trinity.Services.Identity;
 
 namespace IdentityServerAspNetIdentity;
 
@@ -65,6 +66,7 @@ internal static class HostingExtensions
 
         app.UseStaticFiles();
         app.UseRouting();
+        
         app.UseIdentityServer();
         app.UseAuthorization();
         
