@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using Trinity.EntityModels.DataAccess;
 using Trinity.EntityModels.Models;
 
@@ -14,53 +8,53 @@ namespace Inventory.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandController : ControllerBase
+    public class LabelController : ControllerBase
     {
         private readonly InventoryDbContext _context;
 
-        public BrandController(InventoryDbContext context)
+        public LabelController(InventoryDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Brand
+        // GET: api/Label
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BrandDTO>>> GetBrands()
+        public async Task<ActionResult<IEnumerable<LabelDTO>>> GetLabels()
         {
-            List<Brand> brands = await _context.Brands.ToListAsync();
+            List<Label> labels = await _context.Labels.ToListAsync();
 
-            return brands.ConvertAll(
-                new Converter<Brand, BrandDTO>(BrandDTO.MakeDTO));
+            return labels.ConvertAll(
+                new Converter<Label, LabelDTO>(LabelDTO.MakeDTO));
         }
 
-        // GET: api/Brand/5
+        // GET: api/Label/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BrandDTO>> GetBrand(Guid id)
+        public async Task<ActionResult<LabelDTO>> GetLabel(Guid id)
         {
-            var brand = await _context.Brands.FindAsync(id);
+            var label = await _context.Labels.FindAsync(id);
 
-            if (brand == null)
+            if (label == null)
             {
                 return NotFound();
             }
 
-            return BrandDTO.MakeDTO(brand);
+            return LabelDTO.MakeDTO(label);
         }
 
-        // PUT: api/Brand/5
+        // PUT: api/Label/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBrand(Guid id, BrandDTO brandRequest)
+        public async Task<IActionResult> PutLabel(Guid id, LabelDTO labelRequest)
         {
 
             CancellationToken cancellationToken = new CancellationToken();
 
-            if (id != brandRequest.Id)
+            if (id != labelRequest.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(BrandDTO.MakeModel(brandRequest)).State = EntityState.Modified;
+            _context.Entry(LabelDTO.MakeModel(labelRequest)).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +62,7 @@ namespace Inventory.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BrandExists(id))
+                if (!LabelExists(id))
                 {
                     return NotFound();
                 }
@@ -81,40 +75,40 @@ namespace Inventory.Controllers
             return NoContent();
         }
 
-        // POST: api/Brand
+        // POST: api/Label
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<BrandDTO>> PostBrand(BrandDTO brandRequest)
+        public async Task<ActionResult<LabelDTO>> PostLabel(LabelDTO labelRequest)
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            EntityEntry<Brand> b = _context.Brands.Add(BrandDTO.MakeModel(brandRequest));
+            EntityEntry<Label> b = _context.Labels.Add(LabelDTO.MakeModel(labelRequest));
             await _context.SaveChangesAsync(cancellationToken);
 
-            return CreatedAtAction("GetBrand", new { id = b.Entity.Id }, b.Entity);
+            return CreatedAtAction("GetLabel", new { id = b.Entity.Id }, b.Entity);
         }
 
-        // DELETE: api/Brand/5
+        // DELETE: api/Label/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBrand(Guid id)
+        public async Task<IActionResult> DeleteLabel(Guid id)
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            var brand = await _context.Brands.FindAsync(id);
-            if (brand == null)
+            var label = await _context.Labels.FindAsync(id);
+            if (label == null)
             {
                 return NotFound();
             }
 
-            _context.Brands.Remove(brand);
+            _context.Labels.Remove(label);
             await _context.SaveChangesAsync(cancellationToken);
 
             return NoContent();
         }
 
-        private bool BrandExists(Guid id)
+        private bool LabelExists(Guid id)
         {
-            return _context.Brands.Any(e => e.Id == id);
+            return _context.Labels.Any(e => e.Id == id);
         }
     }
 }

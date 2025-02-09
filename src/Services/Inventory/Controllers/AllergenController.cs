@@ -1,12 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using Trinity.EntityModels.DataAccess;
 using Trinity.EntityModels.Models;
 
@@ -14,53 +8,53 @@ namespace Inventory.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BrandController : ControllerBase
+    public class AllergenController : ControllerBase
     {
         private readonly InventoryDbContext _context;
 
-        public BrandController(InventoryDbContext context)
+        public AllergenController(InventoryDbContext context)
         {
             _context = context;
         }
 
-        // GET: api/Brand
+        // GET: api/Allergen
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<BrandDTO>>> GetBrands()
+        public async Task<ActionResult<IEnumerable<AllergenDTO>>> GetAllergens()
         {
-            List<Brand> brands = await _context.Brands.ToListAsync();
+            List<Allergen> allergens = await _context.Allergens.ToListAsync();
 
-            return brands.ConvertAll(
-                new Converter<Brand, BrandDTO>(BrandDTO.MakeDTO));
+            return allergens.ConvertAll(
+                new Converter<Allergen, AllergenDTO>(AllergenDTO.MakeDTO));
         }
 
-        // GET: api/Brand/5
+        // GET: api/Allergen/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<BrandDTO>> GetBrand(Guid id)
+        public async Task<ActionResult<AllergenDTO>> GetAllergen(Guid id)
         {
-            var brand = await _context.Brands.FindAsync(id);
+            var allergen = await _context.Allergens.FindAsync(id);
 
-            if (brand == null)
+            if (allergen == null)
             {
                 return NotFound();
             }
 
-            return BrandDTO.MakeDTO(brand);
+            return AllergenDTO.MakeDTO(allergen);
         }
 
-        // PUT: api/Brand/5
+        // PUT: api/Allergen/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutBrand(Guid id, BrandDTO brandRequest)
+        public async Task<IActionResult> PutAllergen(Guid id, AllergenDTO allergenRequest)
         {
 
             CancellationToken cancellationToken = new CancellationToken();
 
-            if (id != brandRequest.Id)
+            if (id != allergenRequest.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(BrandDTO.MakeModel(brandRequest)).State = EntityState.Modified;
+            _context.Entry(AllergenDTO.MakeModel(allergenRequest)).State = EntityState.Modified;
 
             try
             {
@@ -68,7 +62,7 @@ namespace Inventory.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!BrandExists(id))
+                if (!AllergenExists(id))
                 {
                     return NotFound();
                 }
@@ -81,40 +75,40 @@ namespace Inventory.Controllers
             return NoContent();
         }
 
-        // POST: api/Brand
+        // POST: api/Allergen
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<BrandDTO>> PostBrand(BrandDTO brandRequest)
+        public async Task<ActionResult<AllergenDTO>> PostAllergen(AllergenDTO allergenRequest)
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            EntityEntry<Brand> b = _context.Brands.Add(BrandDTO.MakeModel(brandRequest));
+            EntityEntry<Allergen> b = _context.Allergens.Add(AllergenDTO.MakeModel(allergenRequest));
             await _context.SaveChangesAsync(cancellationToken);
 
-            return CreatedAtAction("GetBrand", new { id = b.Entity.Id }, b.Entity);
+            return CreatedAtAction("GetAllergen", new { id = b.Entity.Id }, b.Entity);
         }
 
-        // DELETE: api/Brand/5
+        // DELETE: api/Allergen/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteBrand(Guid id)
+        public async Task<IActionResult> DeleteAllergen(Guid id)
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            var brand = await _context.Brands.FindAsync(id);
-            if (brand == null)
+            var allergen = await _context.Allergens.FindAsync(id);
+            if (allergen == null)
             {
                 return NotFound();
             }
 
-            _context.Brands.Remove(brand);
+            _context.Allergens.Remove(allergen);
             await _context.SaveChangesAsync(cancellationToken);
 
             return NoContent();
         }
 
-        private bool BrandExists(Guid id)
+        private bool AllergenExists(Guid id)
         {
-            return _context.Brands.Any(e => e.Id == id);
+            return _context.Allergens.Any(e => e.Id == id);
         }
     }
 }

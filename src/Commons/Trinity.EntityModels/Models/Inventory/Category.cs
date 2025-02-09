@@ -14,7 +14,5 @@ namespace Trinity.EntityModels.Models
 
         public string? Description { get; set; }
 
-        // Navigation property
-        public ICollection<Product> Products { get; set; }
     }
 }

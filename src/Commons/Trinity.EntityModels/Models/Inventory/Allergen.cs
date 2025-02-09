@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace Trinity.EntityModels.Models
 {
-    public class Brand : BaseEntity
+    public class Allergen : BaseEntity
     {
         [Key]
         public Guid Id { get; set; }
@@ -11,6 +11,5 @@ namespace Trinity.EntityModels.Models
         [Required]
         [MaxLength(100)]
         public string Name { get; set; }
-
     }
 }

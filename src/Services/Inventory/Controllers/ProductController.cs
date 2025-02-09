@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Trinity.EntityModels.DataAccess;
 using Trinity.EntityModels.Models;
 
@@ -23,17 +24,23 @@ namespace Inventory.Controllers
 
         // GET: api/Product
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<ProductResponse>>> GetProducts()
+        public async Task<ActionResult<IEnumerable<ProductDTO>>> GetProducts()
         {
-            List<Product> products = await _context.Products.ToListAsync();
+            List<Product> products = await _context.Products
+                                                .Include(i => i.Allergens)
+                                                .Include(i => i.Brands)
+                                                .Include(i => i.Categories)
+                                                .Include(i => i.Origins)
+                                                .Include(i => i.Labels)
+                                                .ToListAsync();
 
             return products.ConvertAll(
-                new Converter<Product, ProductResponse>(ProductResponse.MakeProductResponse));
+                new Converter<Product, ProductDTO>(ProductDTO.MakeDTO));
         }
 
         // GET: api/Product/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<ProductResponse>> GetProduct(Guid id)
+        public async Task<ActionResult<ProductDTO>> GetProduct(Guid id)
         {
             var product = await _context.Products.FindAsync(id);
 
@@ -42,13 +49,13 @@ namespace Inventory.Controllers
                 return NotFound();
             }
 
-            return ProductResponse.MakeProductResponse(product);
+            return ProductDTO.MakeDTO(product);
         }
 
         // PUT: api/Product/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutProduct(Guid id, UpdateProductRequest productRequest)
+        public async Task<IActionResult> PutProduct(Guid id, ProductDTO productRequest)
         {
             CancellationToken cancellationToken = new CancellationToken();
 
@@ -57,11 +64,15 @@ namespace Inventory.Controllers
                 return BadRequest();
             }
 
-            Category? c = await _context.Categories.FindAsync(productRequest.CategoryId);
-            Brand? b = await _context.Brands.FindAsync(productRequest.BrandId);
+            var cs = from c in _context.Categories
+                   where productRequest.Categories.Any(s => s.Id == c.Id)
+                   select c;
+            var bs = from b in _context.Brands
+                   where productRequest.Brands.Any(s => s.Id == b.Id)
+                   select b;
 
-            Product product = productRequest.MakeProduct(b!, c!);
-            
+            Product product = ProductDTO.MakeModel(productRequest);
+            _context.Products.Attach(product);
 
             try
             {
@@ -86,28 +97,33 @@ namespace Inventory.Controllers
         // POST: api/Product
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<ProductResponse>> PostProduct(CreateProductRequest productRequest)
+        public async Task<ActionResult<ProductDTO>> PostProduct(ProductDTO productRequest)
         {
             CancellationToken cancellationToken = new CancellationToken();
+            
+            var p = ProductDTO.MakeModel(productRequest);
 
-            Category? c = await _context.Categories.FindAsync(productRequest.CategoryId);
-            Brand? b = await _context.Brands.FindAsync(productRequest.BrandId);
+            p.Allergens.ForEach(x => _context.Attach(x));
+            p.Brands.ForEach(x => _context.Attach(x));
+            p.Categories.ForEach(x => _context.Attach(x));
+            p.Labels.ForEach(x => _context.Attach(x));
+            p.Origins.ForEach(x => _context.Attach(x));
 
-            Product product = productRequest.MakeProduct(b!, c!);
-
-            _context.Products.Add(product);
+            EntityEntry<Product> product = _context.Products.Add(p);
+            
+            
             await _context.SaveChangesAsync(cancellationToken);
 
-            var result = CreatedAtAction("GetProduct", new { id = product.Id }, product);
+            var result = CreatedAtAction("PostProduct", new { id = product.Entity.Id }, p);
 
             if(result.GetType() == typeof(ActionResult)){
                 return result;
             }
 
-            return ProductResponse.MakeProductResponse((Product)result.Value);
+            return ProductDTO.MakeDTO((Product)result.Value);
         }
 
-        // DELETE: api/Product/5
+        // DELETE: api/Product/{id}
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(Guid id)
         {

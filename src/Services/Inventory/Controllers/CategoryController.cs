@@ -1,10 +1,6 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Trinity.EntityModels.DataAccess;
 using Trinity.EntityModels.Models;
 
@@ -23,14 +19,17 @@ namespace Inventory.Controllers
 
         // GET: api/Category
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories()
+        public async Task<ActionResult<IEnumerable<CategoryDTO>>> GetCategories()
         {
-            return await _context.Categories.ToListAsync();
+            List<Category> categorys = await _context.Categories.ToListAsync();
+
+            return categorys.ConvertAll(
+                new Converter<Category, CategoryDTO>(CategoryDTO.MakeDTO));
         }
 
         // GET: api/Category/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategory(Guid id)
+        public async Task<ActionResult<CategoryDTO>> GetCategory(Guid id)
         {
             var category = await _context.Categories.FindAsync(id);
 
@@ -39,22 +38,23 @@ namespace Inventory.Controllers
                 return NotFound();
             }
 
-            return category;
+            return CategoryDTO.MakeDTO(category);
         }
 
         // PUT: api/Category/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(Guid id, Category category)
+        public async Task<IActionResult> PutCategory(Guid id, CategoryDTO categoryRequest)
         {
+
             CancellationToken cancellationToken = new CancellationToken();
-            
-            if (id != category.Id)
+
+            if (id != categoryRequest.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(category).State = EntityState.Modified;
+            _context.Entry(CategoryDTO.MakeModel(categoryRequest)).State = EntityState.Modified;
 
             try
             {
@@ -78,14 +78,14 @@ namespace Inventory.Controllers
         // POST: api/Category
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<Category>> PostCategory(Category category)
+        public async Task<ActionResult<CategoryDTO>> PostCategory(CategoryDTO categoryRequest)
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            _context.Categories.Add(category);
+            EntityEntry<Category> b = _context.Categories.Add(CategoryDTO.MakeModel(categoryRequest));
             await _context.SaveChangesAsync(cancellationToken);
 
-            return CreatedAtAction("GetCategory", new { id = category.Id }, category);
+            return CreatedAtAction("GetCategory", new { id = b.Entity.Id }, b.Entity);
         }
 
         // DELETE: api/Category/5
