@@ -2,7 +2,7 @@
 using Duende.IdentityServer;
 using IdentityModel;
 
-namespace IdentityServerAspNetIdentity;
+namespace Trinity.Services.Identity;
 
 public static class Config
 {
@@ -25,7 +25,8 @@ public static class Config
     public static IEnumerable<ApiScope> ApiScopes =>
         new ApiScope[]
         { 
-            new ApiScope(name: "api1", displayName: "My API")
+            new ApiScope(name: "bff", displayName: "bff"),
+            new ApiScope(name: "trinitygateway", displayName: "Trinity Gateway")
         };
 
     public static IEnumerable<Client> Clients =>
@@ -37,7 +38,7 @@ public static class Config
 
                 // no interactive user, use the clientid/secret for authentication
                 AllowedGrantTypes = GrantTypes.ClientCredentials,
-
+                AccessTokenLifetime = 10,
                 // secret for authentication
                 ClientSecrets =
                 {
@@ -45,31 +46,21 @@ public static class Config
                 },
 
                 // scopes that client has access to
-                AllowedScopes = { "api1" }
+                AllowedScopes = { "bff" }
             },
-            // interactive ASP.NET Core Web App
-            new Client
-            {
-                ClientId = "web",
-                ClientSecrets = { new Secret("secret".Sha256()) },
-
-                AllowedGrantTypes = GrantTypes.Code,
-                
-                // where to redirect to after login
-                RedirectUris = { "https://localhost:5002/signin-oidc" },
-
-                // where to redirect to after logout
-                PostLogoutRedirectUris = { "https://localhost:5002/signout-callback-oidc" },
-
-                AllowOfflineAccess = true,
-
-                AllowedScopes =
+                 new Client
                 {
-                    IdentityServerConstants.StandardScopes.OpenId,
-                    IdentityServerConstants.StandardScopes.Profile,
-                    "verification",
-                    "api1"
-                }
-            }
+                    ClientName = "Trinity Client",
+                    ClientId = "trinity",
+                    ClientSecrets = { new Secret("ce766e16-df99-411d-8d31-0f5bbc6b8eba".Sha256()) },
+                    AllowedGrantTypes = GrantTypes.CodeAndClientCredentials,
+                    RedirectUris = { "https://localhost:5000/signin-oidc" },
+                    PostLogoutRedirectUris = { "https://localhost:5000/signout-callback-oidc" },
+                    RequireConsent = false,
+                    AllowOfflineAccess = true,
+                    RefreshTokenUsage = TokenUsage.ReUse,
+                    AccessTokenLifetime = 60,
+                    AllowedScopes = { "bff"  }
+                },
         };
 }

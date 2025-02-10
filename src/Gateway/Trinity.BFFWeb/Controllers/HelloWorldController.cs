@@ -1,9 +1,11 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Text.Encodings.Web;
 
 namespace Customers.Controllers;
 
 [ApiController]
+[Authorize]
 [Route("[controller]")]
 public class HelloWorldController : ControllerBase
 {

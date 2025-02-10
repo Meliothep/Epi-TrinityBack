@@ -1,0 +1,6 @@
+@Trinity.BFFWeb_HostAddress = http://localhost:5039
+
+GET {{Trinity.BFFWeb_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
