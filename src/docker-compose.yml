@@ -1,5 +1,3 @@
-version: '3.9'
-
 services:
   rabbitmq:
     image: rabbitmq:3-management-alpine
@@ -39,6 +37,45 @@ services:
       - ~/.vsdbg:/remote_debugger:rw
     depends_on:
       - customerPostgres
+    networks:
+        - trinity-network
+
+# ========== GATEWAY ==========
+  gatewayService:
+    image: gatewayservice
+    build:
+      context: .
+      dockerfile: Services.Dockerfile
+      args:
+        CONFIGURATION: Production
+        SERVICE: Trinity.Gateway
+        DIR: Gateway
+        PORT: 5006
+    ports:
+        - 5006:5006
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+        - ~/.vsdbg:/remote_debugger:rw
+    networks:
+        - trinity-network
+
+# ========== IDENTITY ==========
+  identityService:
+    image: identityservice
+    build:
+      context: .
+      dockerfile: Services.Dockerfile
+      args:
+        CONFIGURATION: Production
+        SERVICE: IdentityServerAspNetIdentity
+        PORT: 5001
+    ports:
+        - 5001:5001
+    environment:
+        - ASPNETCORE_ENVIRONMENT=Production
+    volumes:
+        - ~/.vsdbg:/remote_debugger:rw
     networks:
         - trinity-network
 

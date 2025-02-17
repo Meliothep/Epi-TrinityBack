@@ -1,12 +1,8 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
+using Inventory.DataAccess;
+using Inventory.DataAccess.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.Blazor;
 using Trinity.EntityModels.DataAccess;
 using Trinity.EntityModels.Models;
 
@@ -30,7 +26,7 @@ namespace Inventory.Controllers
             List<Brand> brands = await _context.Brands.ToListAsync();
 
             return brands.ConvertAll(
-                new Converter<Brand, BrandDTO>(BrandDTO.MakeDTO));
+                new Converter<Brand, BrandDTO>(x => x.ToBrandDTO()));
         }
 
         // GET: api/Brand/5
@@ -44,7 +40,7 @@ namespace Inventory.Controllers
                 return NotFound();
             }
 
-            return BrandDTO.MakeDTO(brand);
+            return brand.ToBrandDTO();
         }
 
         // PUT: api/Brand/5
@@ -60,7 +56,7 @@ namespace Inventory.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(BrandDTO.MakeModel(brandRequest)).State = EntityState.Modified;
+            _context.Entry(brandRequest.ToBrand()).State = EntityState.Modified;
 
             try
             {
@@ -88,7 +84,7 @@ namespace Inventory.Controllers
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            EntityEntry<Brand> b = _context.Brands.Add(BrandDTO.MakeModel(brandRequest));
+            EntityEntry<Brand> b = _context.Brands.Add(brandRequest.ToBrand());
             await _context.SaveChangesAsync(cancellationToken);
 
             return CreatedAtAction("GetBrand", new { id = b.Entity.Id }, b.Entity);

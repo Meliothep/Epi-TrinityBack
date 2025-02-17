@@ -1,3 +1,5 @@
+using Inventory.DataAccess;
+using Inventory.DataAccess.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -24,7 +26,7 @@ namespace Inventory.Controllers
             List<Origin> origins = await _context.Origins.ToListAsync();
 
             return origins.ConvertAll(
-                new Converter<Origin, OriginDTO>(OriginDTO.MakeDTO));
+                new Converter<Origin, OriginDTO>(x => x.ToOriginDTO()));
         }
 
         // GET: api/Origin/5
@@ -38,7 +40,7 @@ namespace Inventory.Controllers
                 return NotFound();
             }
 
-            return OriginDTO.MakeDTO(origin);
+            return origin.ToOriginDTO();
         }
 
         // PUT: api/Origin/5
@@ -54,7 +56,7 @@ namespace Inventory.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(OriginDTO.MakeModel(originRequest)).State = EntityState.Modified;
+            _context.Entry(originRequest.ToOrigin()).State = EntityState.Modified;
 
             try
             {
@@ -82,7 +84,7 @@ namespace Inventory.Controllers
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            EntityEntry<Origin> b = _context.Origins.Add(OriginDTO.MakeModel(originRequest));
+            EntityEntry<Origin> b = _context.Origins.Add(originRequest.ToOrigin());
             await _context.SaveChangesAsync(cancellationToken);
 
             return CreatedAtAction("GetOrigin", new { id = b.Entity.Id }, b.Entity);

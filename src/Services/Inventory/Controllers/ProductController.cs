@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Inventory.DataAccess;
+using Inventory.DataAccess.DTOs;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +37,7 @@ namespace Inventory.Controllers
                                                 .ToListAsync();
 
             return products.ConvertAll(
-                new Converter<Product, ProductDTO>(ProductDTO.MakeDTO));
+                new Converter<Product, ProductDTO>(x => x.ToProductDTO()));
         }
 
         // GET: api/Product/5
@@ -43,13 +45,19 @@ namespace Inventory.Controllers
         public async Task<ActionResult<ProductDTO>> GetProduct(Guid id)
         {
             var product = await _context.Products.FindAsync(id);
-
+            
             if (product == null)
             {
                 return NotFound();
             }
 
-            return ProductDTO.MakeDTO(product);
+            product.Allergens.ForEach(x => _context.Allergens.Find(x.Id));
+            product.Brands.ForEach(x => _context.Brands.Find(x.Id));
+            product.Categories.ForEach(x => _context.Categories.Find(x.Id));
+            product.Labels.ForEach(x => _context.Labels.Find(x.Id));
+            product.Origins.ForEach(x => _context.Origins.Find(x.Id));
+
+            return product.ToProductDTO();
         }
 
         // PUT: api/Product/5
@@ -71,7 +79,7 @@ namespace Inventory.Controllers
                    where productRequest.Brands.Any(s => s.Id == b.Id)
                    select b;
 
-            Product product = ProductDTO.MakeModel(productRequest);
+            Product product = productRequest.ToProduct();
             _context.Products.Attach(product);
 
             try
@@ -101,7 +109,7 @@ namespace Inventory.Controllers
         {
             CancellationToken cancellationToken = new CancellationToken();
             
-            var p = ProductDTO.MakeModel(productRequest);
+            var p = productRequest.ToProduct();
 
             p.Allergens.ForEach(x => _context.Attach(x));
             p.Brands.ForEach(x => _context.Attach(x));
@@ -120,7 +128,7 @@ namespace Inventory.Controllers
                 return result;
             }
 
-            return ProductDTO.MakeDTO((Product)result.Value);
+            return ((Product)result.Value).ToProductDTO();
         }
 
         // DELETE: api/Product/{id}

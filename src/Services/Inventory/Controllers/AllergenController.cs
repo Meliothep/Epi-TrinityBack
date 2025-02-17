@@ -1,3 +1,5 @@
+using Inventory.DataAccess;
+using Inventory.DataAccess.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -24,7 +26,7 @@ namespace Inventory.Controllers
             List<Allergen> allergens = await _context.Allergens.ToListAsync();
 
             return allergens.ConvertAll(
-                new Converter<Allergen, AllergenDTO>(AllergenDTO.MakeDTO));
+                new Converter<Allergen, AllergenDTO>(x => x.ToAllergenDTO()));
         }
 
         // GET: api/Allergen/5
@@ -38,7 +40,7 @@ namespace Inventory.Controllers
                 return NotFound();
             }
 
-            return AllergenDTO.MakeDTO(allergen);
+            return allergen.ToAllergenDTO();
         }
 
         // PUT: api/Allergen/5
@@ -54,7 +56,7 @@ namespace Inventory.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(AllergenDTO.MakeModel(allergenRequest)).State = EntityState.Modified;
+            _context.Entry(allergenRequest.ToAllergen()).State = EntityState.Modified;
 
             try
             {
@@ -82,7 +84,7 @@ namespace Inventory.Controllers
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            EntityEntry<Allergen> b = _context.Allergens.Add(AllergenDTO.MakeModel(allergenRequest));
+            EntityEntry<Allergen> b = _context.Allergens.Add(allergenRequest.ToAllergen());
             await _context.SaveChangesAsync(cancellationToken);
 
             return CreatedAtAction("GetAllergen", new { id = b.Entity.Id }, b.Entity);

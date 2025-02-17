@@ -1,3 +1,5 @@
+using Inventory.DataAccess;
+using Inventory.DataAccess.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -24,7 +26,7 @@ namespace Inventory.Controllers
             List<Category> categorys = await _context.Categories.ToListAsync();
 
             return categorys.ConvertAll(
-                new Converter<Category, CategoryDTO>(CategoryDTO.MakeDTO));
+                new Converter<Category, CategoryDTO>(x => x.ToCategoryDTO()));
         }
 
         // GET: api/Category/5
@@ -38,7 +40,7 @@ namespace Inventory.Controllers
                 return NotFound();
             }
 
-            return CategoryDTO.MakeDTO(category);
+            return category.ToCategoryDTO();
         }
 
         // PUT: api/Category/5
@@ -54,7 +56,7 @@ namespace Inventory.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(CategoryDTO.MakeModel(categoryRequest)).State = EntityState.Modified;
+            _context.Entry(categoryRequest.ToCategory()).State = EntityState.Modified;
 
             try
             {
@@ -82,7 +84,7 @@ namespace Inventory.Controllers
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            EntityEntry<Category> b = _context.Categories.Add(CategoryDTO.MakeModel(categoryRequest));
+            EntityEntry<Category> b = _context.Categories.Add(categoryRequest.ToCategory());
             await _context.SaveChangesAsync(cancellationToken);
 
             return CreatedAtAction("GetCategory", new { id = b.Entity.Id }, b.Entity);

@@ -1,3 +1,5 @@
+using Inventory.DataAccess;
+using Inventory.DataAccess.DTOs;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
@@ -24,7 +26,7 @@ namespace Inventory.Controllers
             List<Label> labels = await _context.Labels.ToListAsync();
 
             return labels.ConvertAll(
-                new Converter<Label, LabelDTO>(LabelDTO.MakeDTO));
+                new Converter<Label, LabelDTO>(x => x.ToLabelDTO()));
         }
 
         // GET: api/Label/5
@@ -38,7 +40,7 @@ namespace Inventory.Controllers
                 return NotFound();
             }
 
-            return LabelDTO.MakeDTO(label);
+            return label.ToLabelDTO();
         }
 
         // PUT: api/Label/5
@@ -54,7 +56,7 @@ namespace Inventory.Controllers
                 return BadRequest();
             }
 
-            _context.Entry(LabelDTO.MakeModel(labelRequest)).State = EntityState.Modified;
+            _context.Entry(labelRequest.ToLabel()).State = EntityState.Modified;
 
             try
             {
@@ -82,7 +84,7 @@ namespace Inventory.Controllers
         {
             CancellationToken cancellationToken = new CancellationToken();
 
-            EntityEntry<Label> b = _context.Labels.Add(LabelDTO.MakeModel(labelRequest));
+            EntityEntry<Label> b = _context.Labels.Add(labelRequest.ToLabel());
             await _context.SaveChangesAsync(cancellationToken);
 
             return CreatedAtAction("GetLabel", new { id = b.Entity.Id }, b.Entity);
