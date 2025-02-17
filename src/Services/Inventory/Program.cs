@@ -1,6 +1,9 @@
 using Trinity.EntityModels.DataAccess;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddControllers();
+
+builder.Services.AddEndpointsApiExplorer();
 
 builder.AddObservability();
 
@@ -10,17 +13,16 @@ builder.AddApiDefaults();
 
 builder.AddNpgsqlDbContext<InventoryDbContext>("DefaultConnection");
 
-builder.AddRabbitMQ();
-
 var app = builder.Build();
 
 app.MapDefaultEndpoints();
 
 app.UseHttpsRedirection();
 
+app.UseAuthorization();
+
 app.MapControllers();
 
 app.Run();
-
 public partial class InventoryProgram { }
 

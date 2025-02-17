@@ -3,6 +3,7 @@ FROM mcr.microsoft.com/dotnet/sdk:9.0@sha256:3fcf6f1e809c0553f9feb222369f58749af
 ARG CONFIGURATION=Debug
 ARG SERVICE=Inventory
 ARG PORT=8080
+ARG DIR=Services
 
 WORKDIR /app
 EXPOSE $PORT
@@ -19,23 +20,24 @@ FROM --platform=$BUILDPLATFORM mcr.microsoft.com/dotnet/sdk:9.0@sha256:3fcf6f1e8
 ARG CONFIGURATION=Debug
 ARG SERVICE=Inventory
 ARG PORT=8080
+ARG DIR=Services
 
 WORKDIR /src
 # Copier les fichiers .csproj avec leur structure correcte
-COPY ./Services/${SERVICE} ./Services/${SERVICE}
+COPY ./${DIR}/${SERVICE} ./${DIR}/${SERVICE}
 COPY ./Commons ./Commons
 
 
 # Restaurer les dépendances
 WORKDIR "/src"
-RUN dotnet restore "Services/${SERVICE}/${SERVICE}.csproj"
+RUN dotnet restore "${DIR}/${SERVICE}/${SERVICE}.csproj"
 
 # Construire le projet
-RUN dotnet build "/src/Services/${SERVICE}/${SERVICE}.csproj" -c $CONFIGURATION -o /app/build
+RUN dotnet build "/src/${DIR}/${SERVICE}/${SERVICE}.csproj" -c $CONFIGURATION -o /app/build
 
 # Étape de publication
 FROM build AS publish
-RUN dotnet publish "/src/Services/${SERVICE}/${SERVICE}.csproj" -c $CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "/src/${DIR}/${SERVICE}/${SERVICE}.csproj" -c $CONFIGURATION -o /app/publish /p:UseAppHost=false
 
 # Étape finale : préparation de l'image pour l'exécution
 FROM base AS final

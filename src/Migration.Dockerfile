@@ -20,7 +20,7 @@ ARG CONFIGURATION=Debug
 
 WORKDIR /src
 # Copier les fichiers .csproj avec leur structure correcte
-COPY .Trinity.MigrationService .Trinity.MigrationService
+COPY ./Trinity.MigrationService ./Trinity.MigrationService
 COPY ./Commons ./Commons
 
 

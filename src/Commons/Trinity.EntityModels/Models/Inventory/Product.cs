@@ -1,5 +1,8 @@
 using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Newtonsoft.Json;
 
 namespace Trinity.EntityModels.Models
 {
@@ -8,29 +11,41 @@ namespace Trinity.EntityModels.Models
         [Key]
         public Guid Id { get; set; }
 
+        [Required, MaxLength(8)]
+        public string IdSupplier { get; set; }
+
         [Required, MaxLength(100)]
-        public required string Name { get; set; }
+        public string Name { get; set; }
 
         public string? Description { get; set; }
 
         [Required]
-        public required Brand Brand { get; set; }
+        public List<Brand> Brands { get; set; } = new();
 
         [Required]
-        public required Category Category { get; set; } 
-
-        [MaxLength(50)]
-        public string? Barcode { get; set; }
+        public Guid MainCategoryId { get; set; }
 
         [Required]
-        public required decimal Price { get; set; }
+        public List<Category> Categories { get; set; } = new();
 
-        public required int StockQuantity { get; set; } = 0;
+        [Required]
+        public decimal Price { get; set; }
+
+        public int StockQuantity { get; set; } = 0;
+
+        public string? Weight { get; set; }
 
         public string? ImageUrl { get; set; }
 
-        public string? OffId { get; set; }
+        public List<Origin> Origins { get; set; } = new List<Origin>();
 
-        public string? NutritionalInfo { get; set; } // JSON stored as string
+        public List<Label> Labels { get; set; } = new List<Label>();
+
+        public List<Allergen> Allergens { get; set; } = new List<Allergen>();
+
+        [Column(TypeName = "jsonb")]
+        public string? NutritionInfo { get; set; } // JSON stored as a string
+
+        public char? NutritionGrade { get; set; }
     }
 }

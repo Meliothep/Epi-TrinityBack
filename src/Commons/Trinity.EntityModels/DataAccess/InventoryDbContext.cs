@@ -10,6 +10,9 @@ namespace Trinity.EntityModels.DataAccess
         public DbSet<Product> Products { get; set; }
         public DbSet<Brand> Brands { get; set; }
         public DbSet<Category> Categories { get; set; }
+        public DbSet<Allergen> Allergens { get; set; }
+        public DbSet<Label> Labels { get; set; }
+        public DbSet<Origin> Origins { get; set; }
 
         public InventoryDbContext(DbContextOptions options) : base(options)
         {
