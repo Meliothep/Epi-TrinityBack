@@ -10,14 +10,14 @@ public static class DtoToDomainMapper
         return new Allergen()
         {
             Id = allergenDTO.Id,
-            Name = allergenDTO.Name,
+            Name = allergenDTO.Name!,
         };
     }
     public static Brand ToBrand(this BrandDTO brandDTO){
         return new Brand()
         {
             Id = brandDTO.Id,
-            Name = brandDTO.Name,
+            Name = brandDTO.Name!,
         };
     }
 
@@ -26,7 +26,7 @@ public static class DtoToDomainMapper
         return new Category()
         {
             Id = categoryDTO.Id,
-            Name = categoryDTO.Name,
+            Name = categoryDTO.Name!,
             Description = categoryDTO.Description
         };
     }
@@ -35,7 +35,7 @@ public static class DtoToDomainMapper
         return new Label()
         {
             Id = labelDTO.Id,
-            Name = labelDTO.Name,
+            Name = labelDTO.Name!,
         };
     }
 
@@ -43,7 +43,7 @@ public static class DtoToDomainMapper
         return new Origin()
         {
             Id = originDTO.Id,
-            Name = originDTO.Name,
+            Name = originDTO.Name!,
         };
     }
 
@@ -51,8 +51,8 @@ public static class DtoToDomainMapper
         return new Product()
         {
             Id = productDTO.Id ?? Guid.Empty,
-            IdSupplier = productDTO.IdSupplier,
-            Name = productDTO.Name,
+            IdSupplier = productDTO.IdSupplier!,
+            Name = productDTO.Name!,
             Description = productDTO.Description,
             Brands = productDTO.Brands.ConvertAll(
                 new Converter<BrandDTO, Brand>(x=>x.ToBrand())),

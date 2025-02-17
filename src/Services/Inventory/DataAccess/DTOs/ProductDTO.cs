@@ -5,15 +5,15 @@ namespace Inventory.DataAccess.DTOs;
 public class ProductDTO
 {
     public Guid? Id { get; set; }
-    public string IdSupplier { get; set; }
-    public string Name { get; set; }
+    public string? IdSupplier { get; set; }
+    public string? Name { get; set; }
     public string? Description { get; set; }
     public List<BrandDTO> Brands { get; set; } = new List<BrandDTO>();
     public Guid MainCategoryId { get; set; } 
     public List<CategoryDTO> Categories { get; set; } = new List<CategoryDTO>();
     public decimal Price { get; set; }
     public int StockQuantity { get; set; }
-    public string Weight { get; set; }
+    public string? Weight { get; set; }
     public string? ImageUrl { get; set; }
 
     public List<OriginDTO> Origins { get; set; } = new List<OriginDTO>();
@@ -25,5 +25,5 @@ public class ProductDTO
     public string? NutritionalInfo { get; set; }
 
     public char? NutritionGrade { get; set; }
-    
+
 }

@@ -128,7 +128,7 @@ namespace Inventory.Controllers
                 return result;
             }
 
-            return ((Product)result.Value).ToProductDTO();
+            return ((Product)result.Value!).ToProductDTO();
         }
 
         // DELETE: api/Product/{id}
