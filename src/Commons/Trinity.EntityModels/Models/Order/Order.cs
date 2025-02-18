@@ -10,7 +10,7 @@ namespace Trinity.EntityModels.Models
         public Guid Id { get; set; }
 
         [Required]
-        public required Customer Customer { get; set; }
+        public required Guid Customer { get; set; }
 
         [Required]
         public OrderStatus Status { get; set; } = OrderStatus.Pending;

@@ -9,7 +9,7 @@ namespace Trinity.EntityModels.Models
         public Guid Id { get; set; }
 
         [Required]
-        public required User User { get; set; }
+        public required Guid User { get; set; }
 
         [Required, MaxLength(50)]
         public required string FirstName { get; set; }
@@ -26,6 +26,5 @@ namespace Trinity.EntityModels.Models
         public string? Notes { get; set; }
 
         public required ICollection<Address> Addresses { get; set; }
-        //public required ICollection<Order> Orders { get; set; }
     }
 }

@@ -9,9 +9,6 @@ namespace Trinity.EntityModels.Models
         public Guid Id { get; set; }
 
         [Required]
-        public required Customer Customer { get; set; }
-
-        [Required]
         [MaxLength(200)]
         public required string Street { get; set; }
 

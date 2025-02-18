@@ -18,6 +18,6 @@ namespace Trinity.EntityModels.Models
         public PaymentMethod Method { get; set; }
 
         [Required]
-        public DateTime PaymentDate { get; set; } = DateTime.UtcNow;        
+        public DateTime PaymentDate { get; set; } = DateTime.UtcNow;
     }
 }

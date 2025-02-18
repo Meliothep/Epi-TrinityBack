@@ -12,10 +12,10 @@ namespace Trinity.EntityModels.Models
         public Guid Id { get; set; }
 
         [Required, MaxLength(8)]
-        public string IdSupplier { get; set; }
+        public string? IdSupplier { get; set; }
 
         [Required, MaxLength(100)]
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public string? Description { get; set; }
 

@@ -11,7 +11,7 @@ namespace Trinity.EntityModels.Models
         public required Order Order { get; set; }
         
         [Required]
-        public required Product Product { get; set; }
+        public required Guid Product { get; set; }
 
         [Required]
         public int Quantity { get; set; }

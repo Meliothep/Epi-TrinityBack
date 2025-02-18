@@ -61,7 +61,7 @@ public static class DomainToDtoMapper
                     new Converter<Category, CategoryDTO>(x=>x.ToCategoryDTO())),
             Price = product.Price,
             StockQuantity = product.StockQuantity,
-            Weight = product.Weight,
+            Weight = product.Weight!,
             ImageUrl = product.ImageUrl,
             Origins = product.Origins.ConvertAll(
                     new Converter<Origin, OriginDTO>(x=>x.ToOriginDTO())),

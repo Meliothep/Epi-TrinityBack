@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using Ocelot.DependencyInjection;
@@ -8,7 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.ConfigureIdentity();
 
-builder.Configuration.AddJsonFile("ocelot.json", optional: false, reloadOnChange: true);
+builder.Configuration.AddJsonFile($"ocelot.{builder.Environment.EnvironmentName}.json", optional: false, reloadOnChange: true);
 
 builder.Services.AddHttpClient();
 
@@ -26,7 +27,7 @@ builder.Services.AddCors(options =>
 builder.Services.AddAuthentication("Bearer")
     .AddJwtBearer("Bearer", options =>
     {
-        options.Authority = "https://localhost:5001";
+        options.Authority = builder.Configuration["IdentityUrl"] ;
         options.TokenValidationParameters = new TokenValidationParameters
         {
             ValidateAudience = false
